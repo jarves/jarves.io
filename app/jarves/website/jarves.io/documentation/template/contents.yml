@@ -1,0 +1,28 @@
+title: Contents placeholder
+layout: documentation
+sort: 2
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+            # Contents placeholder
+
+            `{% contents id %}` is a content placeholder you can use to give your content editor the ability to place
+            content (text, images, plugins, markdown, ...) at the position of this statement.
+
+            Example:
+
+
+            ```html
+            <div class="main-sidebar">
+              {{ navigationLevel(2) }}
+            </div>
+
+            <div class="main-content">
+              {% contents 1 %}
+            </div>
+            ```
+
+            At `{% contents 1 %}` is in the Jarved Editor (Administration -> Pages) now a management interface given, the
+            use can use to place own custom content.

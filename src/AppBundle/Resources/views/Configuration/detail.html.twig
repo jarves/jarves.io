@@ -1,0 +1,21 @@
+<h2>Configuration <span class="arrow-right"></span> {{ config.class }}
+<div class="sub">
+    &lt;{{ config.rootName }}&gt;
+</div>
+</h2>
+
+<p>
+    Source &raquo;
+    <a href="https://github.com/jarves/jarves/blob/master/Configuration/{{ config.class }}.php">Jarves\Configuration\{{ config.class }}</a>.
+</p>
+
+
+{% set description %}
+
+```xml
+{{ config.toXml(true, true)|raw }}
+```
+
+{% endset %}
+
+{{ description|markdowner }}

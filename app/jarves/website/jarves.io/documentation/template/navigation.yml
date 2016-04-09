@@ -1,0 +1,64 @@
+title: Navigation
+layout: documentation
+sort: 3
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+            # Navigation
+
+            ## `{{ navigationLevel(level) }}`
+
+            With `navigationLevel(level)` you can render at the place of this statement a navigation of defined level.
+
+            Level 1 means (`{{ navigationLevel(1)}}`) that the root level of pages (level directly under your domain)
+            is rendered as a list of `<a>` elements.
+
+            If you specify a id above 1 all children pages of current active page at level 1 will be rendered.
+
+            Examples:
+
+            * navigationLevel(1) renders all pages under the domain (root pages)
+            * navigationLevel(2) renders the children of the active page of level 1 (a root page)
+              * If there's no active page at a level above, the list will be empty
+            * navigationLevel(3) renders the children of the active page of level 2 (second level, directly under root page)
+              * If there's no active page at a level above or at root page level, the list will be empty
+
+            ## `{{ navigationId(id) }}`
+
+            With `navigationId(id)` you can render at the place of this statement a navigation of children of defined
+            page id. All children pages of defined `id` are rendered as a list of `<a>` element.
+
+            Note: Both twig functions have a second argument `template`, you can use to change the template that should
+            be used to render the `<a>` list. Default is `JarvesBundle:Default:navigation.html.twig`
+            (`Jarves/Resources/views/Default/navigation.html.twig`).
+
+
+            Example:
+
+
+            ```html
+            <div class="main-sidebar">
+              <nav>
+                {{ navigationLevel(1) }}
+              </nav>
+            </div>
+
+            <div class="main-content">
+              {% contents 1 %}
+            </div>
+            ```
+
+            Result:
+
+            ```html
+            <div class="main-sidebar">
+              <nav>
+                <a class="active" href="">Home</a>
+                <a href="documentation">Documentation</a>
+                <a class="" href="download">Download</a>
+                <a class="" href="support">Support</a>
+              </nav>
+            </div>
+            ```

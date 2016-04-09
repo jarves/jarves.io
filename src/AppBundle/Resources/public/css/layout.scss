@@ -1,0 +1,653 @@
+@import "bourbon/bourbon";
+//
+//// Change the grid settings
+//$column: 90px;
+//$gutter: 30px;
+//$grid-columns: 4;
+//$columns: 4;
+//$max-width: em(1088);
+//$width: $columns * $fg-column + ($columns - 1) * $fg-gutter;
+//
+//// Define your breakpoints
+//$tablet: new-breakpoint(max-width 768px 8);
+//$mobile: new-breakpoint(max-width 480px 4);
+
+@import 'neat/neat';
+@import "animations";
+$mobile: new-breakpoint(max-width 480px 4);
+$mobile: new-breakpoint(max-width 480px 4);
+
+@import "normalize.css";
+@import "markdown.css";
+@import "owl.carousel.css";
+@import "../libs/font-awesome/css/font-awesome.min.css";
+
+$mainColor: #041114;
+
+@import "home-architecture";
+
+code, .hljs {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  .hljs-string, .hljs-doctag {
+    color: #0E943F;
+  }
+}
+
+
+.hljs-comment, .hljs-quote {
+  color: #7D7D7D;
+}
+
+pre > code {
+  position: relative;
+  border: 0;
+}
+
+$borderColor: #86B6C1;
+pre.fancy{
+  position: relative;
+  overflow: visible;
+  padding: 0;
+
+  .code-top {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: -10px;
+    border-top: 1px dashed $borderColor;
+  }
+
+  .code-bottom {
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    right: -10px;
+    border-bottom: 1px dashed $borderColor;
+  }
+
+  .code-left {
+    position: absolute;
+    left: 0;
+    top: -10px;
+    bottom: -10px;
+    border-left: 1px dashed $borderColor;
+  }
+
+  .code-right {
+    position: absolute;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+    border-right: 1px dashed $borderColor;
+  }
+}
+
+.arrow-right {
+  font: normal normal normal 24px/1 FontAwesome;
+  font-weight: 300;
+  color: #bdbebf;
+  &:before {
+    content: "\f105";
+  }
+}
+
+::selection {
+  background: #27637e;
+  color: white;
+}
+
+::-moz-selection {
+  background: #27637e;
+  color: white;
+}
+
+body, html {
+  background-color: #041114;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  line-height: 190%;
+}
+
+b, strong {
+  font-weight: 400;
+}
+
+header {
+  padding: 30px;
+  height: 120px;
+  background-color: $mainColor;
+  @include media(new-breakpoint(max-width 740px)) {
+    height: 200px;
+    text-align: center;
+  }
+  @include media(new-breakpoint(max-width 420px)) {
+    padding: 30px 5px;
+  }
+}
+
+.home header {
+  @include animation(topFadeIn 1s ease-out);
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+
+header nav {
+  float: right;
+  @include media(new-breakpoint(max-width 740px)) {
+    float: none;
+  }
+}
+
+header .logo {
+  float: left;
+
+  @include media(new-breakpoint(max-width 740px)) {
+    float: none;
+  }
+}
+
+.logo img {
+  width: 60px;
+}
+
+nav {
+  margin: 30px 0;
+  padding: 0;
+}
+
+nav a {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 20px;
+  @include media(new-breakpoint(max-width 420px)) {
+    margin-left: 5px;
+  }
+}
+
+nav a,
+nav a:link {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+nav a.active,
+nav a.active:link,
+nav a.active:hover {
+  color: lighten($mainColor, 50%);
+}
+
+footer a:hover,
+nav a:hover {
+  color: gray;
+}
+
+/*
+ * Basics
+ */
+
+a, a:link {
+  color: #1B6D80;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+h1, h2 {
+  color: white;
+  font-weight: 300;
+}
+
+h3, h4, h5 {
+  font-weight: 400;
+}
+
+.break {
+  clear: both;
+}
+
+
+
+.home-banner {
+  background-image: url(../images/home-banner-bg.jpg);
+  background-repeat: repeat-x;
+  background-position: center top;
+  height: 750px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-banner-bg-top {
+  background-image: url(../images/home-banner-bg-top2.png);
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 480px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  @include animation(banner-top 45s linear);
+  @include animation-iteration-count(infinite);
+}
+
+.home-banner-page {
+  position: relative;
+  height: 100%;
+}
+
+.home-banner .wrapper {
+  position: relative;
+}
+
+.home-banner-page-1 .home-banner-text {
+  padding-top: 106px;
+  font-size: 1.3rem;
+  position: relative;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+
+.home-banner-page-1 .home-banner-text li:before {
+  content: '-';
+  padding-right: 10px;
+}
+
+.home-banner-page-1 .home-banner-text li:after {
+  content: '-';
+  padding-left: 10px;
+}
+
+.home-banner-page-1 .home-banner-text ul {
+  padding-left: 10px;
+}
+
+.home-banner-page-1 .home-banner-text li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.home-banner-page h1 {
+  color: white;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.home-banner-page-1 {
+  overflow: hidden;
+}
+
+.home-banner-page-1 .home-screen {
+  position: absolute;
+  right: -20%;
+  top: 130px;
+  @include media(new-breakpoint(max-width 740px)) {
+    display: none;
+  }
+}
+
+body .banner-screen-video {
+  position: absolute;
+  width: 539px;
+  height: 405px;
+  left: 84px;
+  top: 24px;
+}
+
+.vjs-default-skin .vjs-big-play-button,
+.vjs-default-skin:hover .vjs-big-play-button,
+.vjs-default-skin .vjs-big-play-button:focus
+ {
+  border: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-border-radius: none;
+  left: 200px;
+  top: 260px;
+}
+
+.home-banner-page-1 .home-screen img {
+  width: 700px;
+}
+
+.home-banner-page-1-buttons {
+  position: absolute;
+  left: -6050px;
+  right: 0;
+  bottom: -130px;
+  height: 60px;
+  background-color: $mainColor;
+  text-align: right;
+  @include animation(leftFadeIn 0.8s ease-out);
+
+  @include media(new-breakpoint(max-width 455px)) {
+    position: relative;
+    bottom: 0;
+    left: 0;
+
+  }
+}
+
+
+.home-banner-page-1-buttons a,
+.home-banner-page-1-buttons a:link {
+  display: inline-block;
+  line-height: 60px;
+  text-decoration: none;
+  padding: 0 12px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 23px;
+  @include media(new-breakpoint(max-width 420px)) {
+    font-size: 16px;
+  }
+}
+
+
+.home-banner-page-1-buttons a:hover {
+  background-color: lighten($mainColor, 10%);
+}
+
+div.home-banner-logo {
+  height: 1px;
+}
+
+img.home-banner-logo-bg {
+  position: absolute;
+  top: 110px;
+  left: -400px;
+  @include animation(bgSail 20s);
+  @include animation-iteration-count(infinite);
+}
+
+
+.home-features {
+  padding: 50px 0;
+  padding-bottom: 140px;
+}
+
+.home-features-container {
+  @include outer-container;
+  width: auto;
+  max-width: 1300px;
+}
+
+.home-features .wrapper {
+  max-width: 100%;
+}
+
+.home-features h1 {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  margin-bottom: 80px;
+}
+
+.home-features-item {
+  padding: 0 25px;
+  margin-bottom: 35px;
+
+  @include media(new-breakpoint(min-width 800px)) {
+    @include span-columns(4);
+    @include omega(3n);
+  }
+
+  @include media(new-breakpoint(max-width 800px)) {
+    @include span-columns(6);
+    @include omega(2n);
+  }
+
+  @include media(new-breakpoint(max-width 520px)) {
+    @include span-columns(12);
+    @include omega(1n);
+  }
+}
+
+.home-features h3 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.home-more h1 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  text-transform: none;
+  margin-bottom: 5px;
+  color: $mainColor;
+  position: relative;
+}
+
+.home-more, .default-content {
+  background-color: #f0f0f0;
+  color: #041114;
+  overflow: hidden;
+}
+
+.home-more .wrapper {
+  padding: 90px 0;
+  position: relative;
+  text-align: center;
+}
+
+//
+//.home-more .wrapper1 {
+//  padding-bottom: 0;
+//}
+
+
+.home-more h1 + .sub {
+  padding-top: 0;
+  margin-top: 20px;
+  margin-bottom: 70px;
+  font-size: 1.3rem;
+  position: relative;
+  color: gray;
+}
+
+.home-more-left {
+  text-align: justify;
+  position: relative;
+}
+
+
+.home-more-architecture {
+  float: left;
+  width: 450px;
+  height: 470px;
+  margin-top: 53px;
+  //  background-color: #ececec;
+  position: relative;
+  @include media(new-breakpoint(max-width 720px)) {
+    float: none;
+    margin: auto;
+    zoom: 0.8;
+  }
+  @include media(new-breakpoint(max-width 420px)) {
+    float: none;
+    margin: auto;
+    zoom: 0.65;
+    font-size: 11px;
+  }
+}
+
+
+.home-more-right {
+  width: 520px;
+  margin-left: auto;
+  margin-top: 110px;
+  margin-right: 0;
+  text-align: justify;
+  position: relative;
+  @include media(new-breakpoint(max-width 720px)) {
+    width: auto;
+  }
+}
+
+.home-more-logo-bg {
+  position: absolute;
+  right: -190px;
+  top: 00px;
+}
+
+.home-more-screens {
+  text-align: center;
+  padding: 40px 0;
+}
+
+
+
+.home-more-register {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.owl-carousel {
+  background-color: #ccc;
+  padding: 50px 0;
+  padding-bottom: 35px;
+}
+
+
+.home-more-register form {
+//  padding: 15px 0;
+}
+
+.home-more-register input.text {
+  padding: 5px;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 300;
+  border: 0;
+  width: 250px;
+  background-color: lighten($mainColor, 30%);
+}
+
+.home-more-register input.submit {
+  padding: 5px 20px;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 300;
+  border: 0;
+  background-color: lighten($mainColor, 10%);
+  color: white;
+}
+
+
+.home-more-register input.submit:hover {
+  background-color: lighten($mainColor, 21%);
+}
+
+
+.default-content .wrapper {
+  text-align: left;
+
+  h1, h2, h3, h4, h5 {
+    color: #111;
+  }
+}
+
+.owl-controls {
+  text-align: center;
+}
+
+
+.owl-nav > div {
+  display: inline-block;
+}
+
+.owl-next {
+  margin-left: 15px;
+}
+
+.sub {
+  color: #717171;
+}
+
+h1, h2, h3 {
+  .sub {
+    font-size: smaller;
+  }
+}
+
+footer .wrapper {
+  text-align: center;
+}
+
+footer {
+  background-color: lighten($mainColor, 3%);
+  color: gray;
+  padding-bottom: 30px;
+}
+
+footer .copyright {
+  font-size: 11px;
+  color: #ddd;
+}
+
+footer a,
+footer a:link {
+  text-decoration: none;
+}
+
+
+footer a:hover {
+  color: white;
+}
+
+footer .links {
+  padding: 30px;
+  background-color: $mainColor;
+}
+
+
+footer .links a,
+footer .links a:link {
+  text-decoration: none;
+  padding: 0 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+
+footer .logo {
+  padding: 10px;
+  padding-top: 40px;
+}
+
+footer .logo img {
+  width: 40px;
+}
+
+
+
+
+
+
+
+

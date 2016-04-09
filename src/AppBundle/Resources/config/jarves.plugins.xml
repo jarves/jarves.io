@@ -1,0 +1,24 @@
+<config>
+  <bundle>
+    <plugins>
+      <plugin id="documentation-configuration-detail">
+        <label>Documentation Configuration Detail</label>
+        <controller>AppBundle:Documentation:configurationDetail</controller>
+        <routes>
+          <route pattern="{className}">
+            <requirement key="className">[a-zA-Z]+</requirement>
+          </route>
+        </routes>
+      </plugin>
+      <plugin id="documentation-field-detail">
+        <label>Documentation Field Detail</label>
+        <controller>AppBundle:Documentation:fieldDetail</controller>
+        <routes>
+          <route pattern="{className}">
+            <requirement key="className">[a-zA-Z]+</requirement>
+          </route>
+        </routes>
+      </plugin>
+    </plugins>
+  </bundle>
+</config>

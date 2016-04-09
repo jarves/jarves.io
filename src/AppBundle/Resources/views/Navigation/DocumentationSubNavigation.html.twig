@@ -1,0 +1,19 @@
+{% if navigation %}
+    {% for children in navigation.getLinks() %}
+        <a class="{% if children|isActive %}active{% endif %}" href="{{ children|url }}">{{  children.getTitle() }}</a>
+
+        {%  if children.urn == 'fields' %}
+            {{ render(controller('AppBundle:Documentation:fieldsNavigation', {parentNode: children})) }}
+        {% elseif children.urn == 'configuration' %}
+            {{ render(controller('AppBundle:Documentation:configurationNavigation', {parentNode: children})) }}
+        {% elseif children.getLinks() %}
+            <div class="documentation-navigation-sub">
+            {% for children in children.getLinks() %}
+                <div class="item">
+                    <a class="{% if children|isActive %}active{% endif %}" href="{{ children|url }}">{{  children.getTitle() }}</a>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}

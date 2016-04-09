@@ -1,0 +1,19 @@
+{{ loadAsset('http://fonts.googleapis.com/css?family=Open+Sans:400,300', 'text/css') }}
+{{ loadAsset('http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400', 'text/css') }}
+{{ loadAsset('@AppBundle/css/layout.scss') }}
+
+{{ loadAsset('@AppBundle/js/jquery-1.11.1.min.js') }}
+{{ loadAsset('@AppBundle/js/owl.carousel.min.js') }}
+
+{{ loadAsset('@AppBundle/libs/swipebox/css/swipebox.min.css') }}
+{{ loadAsset('@AppBundle/libs/swipebox/js/jquery.swipebox.min.js') }}
+
+<header>
+    <div class="wrapper">
+        <a href="/" class="logo"><img src="/bundles/app/images/jarves-logo.png"/></a>
+        <nav>
+            {{ navigationLevel(1) }}
+        </nav>
+        <div class="break"></div>
+    </div>
+</header>

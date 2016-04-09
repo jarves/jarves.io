@@ -1,0 +1,26 @@
+{% include 'AppBundle:Layout:header.html.twig' %}
+
+{{ loadAsset('@AppBundle/css/documentation.scss') }}
+{{ loadAsset('@AppBundle/js/doc.js') }}
+
+<div class="main-wrapper">
+    <section class="content">
+        <div class="default-content">
+            <div class="wrapper">
+
+                <div class="documentation-content-left">
+                    <h3><a href="/documentation">Documentation</a></h3>
+                    Version: <a href="https://github.com/jarves/jarves">dev-master</a>
+                    <div class="documentation-navigation">
+                    {{ navigationLevel(2, 'AppBundle:Navigation:DocumentationSubNavigation.html.twig') }}
+                    </div>
+                </div>
+                <div class="documentation-content-right">
+                    {% contents 1 %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% include 'AppBundle:Layout:footer.html.twig' %}

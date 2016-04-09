@@ -1,0 +1,10 @@
+domain: jarves.io
+lang: en
+master: true
+alias: 127.0.0.1, dev.jarves.io, stage.jarves.io
+resourceCompression: false
+path: /
+searchIndexKey: ba405fabbf88b918cd4f8ff5fa9d86fd
+theme: jarves
+titleFormat: '%title% | Jarves - The Symfony CMS and RAD Framework'
+startnode: home

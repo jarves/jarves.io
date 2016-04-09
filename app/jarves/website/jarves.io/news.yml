@@ -1,0 +1,16 @@
+title: News
+sort: 4
+visible: false
+contents:
+    -
+        boxId: 1
+        sort: 0
+        content:
+            bundle: JarvesPublicationBundle
+            plugin: listing
+            options:
+                template: default.html.twig
+                itemsPerPage: 10
+                detailPage: ''
+        type: plugin
+        hide: false

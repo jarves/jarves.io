@@ -1,0 +1,58 @@
+.documentation-content-right {
+  margin-left: 350px;
+  padding-top: 55px;
+}
+
+.documentation-content-left {
+  float: left;
+  width: 300px;
+  border-right: 1px dashed silver;
+  padding-bottom: 50px;
+
+}
+
+.documentation-navigation {
+  > a {
+    display: block;
+    border-bottom: 1px dashed silver;
+    padding-top: 6px;
+    color: #575757;
+    padding-bottom: 3px;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+.documentation-navigation-sub {
+  padding-left: 25px;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  > .item {
+    line-height: 24px;
+  }
+
+  .desc {
+    color: gray;
+  }
+}
+
+table.table {
+  width: 100%;
+  td {
+    padding: 2px;
+    font-size: 14px;
+  }
+
+  th {
+    font-weight: 400;
+    font-size: 14px;
+    border-bottom: 1px dashed gray;
+  }
+}
+
+.description {
+  color: #6e6e6e;
+}

@@ -1,0 +1,20 @@
+<config>
+  <bundle>
+    <themes>
+      <theme id="jarves" doctype="AppBundle::doctype.html.twig">
+        <label>Jarves.io Website</label>
+        <layouts>
+          <layout key="startpage">
+            <file>AppBundle:Layout:startpage.html.twig</file>
+          </layout>
+          <layout key="default">
+            <file>AppBundle:Layout:default.html.twig</file>
+          </layout>
+          <layout key="documentation">
+            <file>AppBundle:Layout:documentation.html.twig</file>
+          </layout>
+        </layouts>
+      </theme>
+    </themes>
+  </bundle>
+</config>

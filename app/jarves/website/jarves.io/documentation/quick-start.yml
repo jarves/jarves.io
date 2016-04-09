@@ -1,0 +1,13 @@
+title: 'Quick Start'
+layout: documentation
+sort: 0
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+
+          # Quick Start
+
+          To get a quick start using Jarves you should follow the [installation documentation](documentation/quick-start/installation)
+          and use [PHP-PM](https://github.com/php-pm/php-pm).

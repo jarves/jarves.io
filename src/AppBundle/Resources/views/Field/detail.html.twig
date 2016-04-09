@@ -1,0 +1,90 @@
+<h2>Field <span class="arrow-right"></span> {{ type.name }}
+    <div class="sub">
+        {{ extractor.shortClassName }}
+    </div>
+</h2>
+
+<p>
+    Source &raquo;
+    <a href="https://github.com/jarves/jarves/blob/master/Admin/FieldTypes/{{ extractor.shortClassName }}.php">Jarves\Admin\FieldTypes\{{ extractor.shortClassName }}</a>.
+</p>
+
+{% if extractor.instanceOfClass('Jarves\\Admin\\FieldTypes\\TypeUserInterfaceOnly') %}
+    <h4>User Interface only.</h4>
+
+    This field has not model counterpart, and thus does not generate any model related stuff nor saves it content to the database.
+{% else %}
+
+    <h3>Object changes</h3>
+
+    <p class="description">This field changes your object in one way or another. It can generate one or more model fields (for Propel mode called columns),
+        new relations to other objects or even add new objects the field needs to work correctly.</p>
+
+    <h4>Added Fields</h4>
+
+
+    {% if type.columns %}
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>PHP Type</th>
+            <th>Storage Type</th>
+        </tr>
+        {% for column in type.columns  %}
+        <tr>
+            <td>{{ column.name }}</td>
+            <td>{{ column.phpDataType }}</td>
+            <td>{{ column.sqlDataType }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <div class="description">None</div>
+    {% endif %}
+
+    <h4>Added Relations</h4>
+    {% if object.relations %}
+
+        <p class="description">Depending on the relation type, the underlying storage in case of Propel is adding
+            either a foreign key or a cross table.
+        </p>
+
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>To Object</th>
+            <th>Type</th>
+        </tr>
+        {% for relation in object.relations %}
+            <tr>
+                <td>{{ relation.name }}</td>
+                <td>{{ relation.foreignObjectKey }}</td>
+                <td>{{ relation.type }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <div class="description">None</div>
+    {% endif %}
+
+    <h4>Added Objects</h4>
+    {% if addedObjects %}
+
+    <table class="table">
+        <tr>
+            <th>key</th>
+            <th>Storage</th>
+            <th>Fields</th>
+        </tr>
+        {% for object in addedObjects %}
+            <tr>
+                <td>{{ object.key }}</td>
+                <td>{{ object.storageService }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <div class="description">None</div>
+    {% endif %}
+{% endif %}

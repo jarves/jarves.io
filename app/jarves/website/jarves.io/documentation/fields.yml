@@ -1,0 +1,10 @@
+title: Fields
+layout: documentation
+sort: 2
+contents:
+    -
+        boxId: 1
+        content:
+            bundle: AppBundle
+            plugin: documentation-field-detail
+        type: plugin

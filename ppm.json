@@ -1,0 +1,14 @@
+{
+    "bridge": "HttpKernel",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "workers": 1,
+    "app-env": "dev",
+    "debug": 1,
+    "logging": 1,
+    "static": true,
+    "bootstrap": "PHPPM\\Bootstraps\\Symfony",
+    "max-requests": 1000,
+    "concurrent-requests": false,
+    "php-cgi": false
+}

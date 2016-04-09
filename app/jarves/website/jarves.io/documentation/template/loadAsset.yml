@@ -1,0 +1,43 @@
+title: LoadAsset
+layout: documentation
+sort: 1
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+            # LoadAsset
+
+            `{{ loadAsset(path) }}` is a method to inject javascript, css or scss file into your PageResponse.
+
+            Example:
+
+            ```html
+            {{ loadAsset('http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400', 'text/css') }}
+            {{ loadAsset('@AppBundle/css/layout.scss') }}
+
+            {{ loadAsset('@AppBundle/js/jquery-1.11.1.min.js') }}
+
+            <div class="main-website">
+              {% contents 1 %}
+            </div>
+            ```
+
+            ## Path
+
+            `path` argument of `loadAsset()` can be a expression like `@{bundleName}{path}`. @bundleName will be replaced
+            with the `Resources/public` folder of the bundle.
+
+            Example: `@AppBundle/css/layout.scss` -> `src/AppBundle/Resources/public/css/layout.scss`.
+
+            ## Auto transpiling
+
+            Once you have install sass ([sass-lang.com/install](http://sass-lang.com/install)) you can benefit from
+            Jarves functionality to automatically compile scss to css.
+
+            Statement like `{{ loadAsset('@AppBundle/css/layout.scss') }}` let the `layout.scss` compile. Its generated
+            css is then injected to the PageResponse:
+
+            ```html
+            <link rel="stylesheet" type="text/css" href="cache/scss/bundles/app/css/layout.css?c=3078ab" >
+            ```

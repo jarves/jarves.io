@@ -1,0 +1,11 @@
+title: Configuration
+layout: documentation
+sort: 3
+contents:
+    -
+        boxId: 1
+        content:
+            bundle: AppBundle
+            plugin: documentation-configuration-detail
+            options: {  }
+        type: plugin

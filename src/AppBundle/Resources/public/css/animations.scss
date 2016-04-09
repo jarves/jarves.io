@@ -1,0 +1,61 @@
+@import "bourbon/bourbon";
+
+
+@include keyframes(scaleFadeIn) {
+  from {
+    @include transform(scale(0));
+  }
+  to {
+    @include transform(scale(1));
+  }
+}
+
+@include keyframes(topFadeIn) {
+  from {
+    top: -20px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@include keyframes(leftFadeIn) {
+  from {
+    opacity: 0.5;
+    right: 120px;
+  }
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+@include keyframes(bgSail) {
+  0% {
+    left: -400px;
+  }
+  80% {
+    left: -450px;
+  }
+  100% {
+    left: -400px;
+  }
+}
+
+@include keyframes(banner-top) {
+  0% {
+    right: 0px;
+  }
+  40% {
+    right: -950px;
+    left: 0;
+  }
+  80% {
+    right: 0;
+    left: -550px;
+  }
+  100% {
+    right: 0px;
+    left: 0;
+  }
+}

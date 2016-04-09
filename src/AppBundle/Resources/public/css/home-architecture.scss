@@ -1,0 +1,88 @@
+$width: 120px;
+
+.home-more-architecture .a-box {
+  border: 2px solid #3b4c54;
+  border-radius: 2px;
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  width: $width;
+  line-height: 50px;
+  text-align: center;
+  color: #4e4e4e;
+  font-weight: 400;
+  height: 50px;
+}
+
+.home-more-architecture .a-box:hover {
+  background-color: #f8f8f8;
+}
+
+.home-more-architecture .a-db1 {
+  left: 0px;
+  top: 50px;
+}
+
+.home-more-architecture .a-db2 {
+  left: $width+25;
+  top: 50px;
+}
+
+.home-more-architecture .a-db3 {
+  left: ($width+25)*2;
+  top: 50px;
+}
+
+.line-bottom:after {
+  position: absolute;
+  left: 50%;
+  content: '';
+  width: 1px;
+  height: 60px;
+  bottom: -60px;
+  border-left: 1px dashed gray;
+}
+
+.home-more-architecture .a-db1:after,
+.home-more-architecture .a-db3:after {
+  height: 33px;
+  bottom: -33px;
+}
+
+.home-more-architecture .a-db2:before {
+  position: absolute;
+  left: -82px;
+  right: -82px;
+  content: '';
+  height: 1px;
+  bottom: -33px;
+  border-bottom: 1px dashed gray;
+}
+
+.home-more-architecture .a-orm {
+  left: $width+25;
+  top: 162px;
+}
+
+.home-more-architecture .a-orm:after,
+.home-more-architecture .a-symfony:after,
+.home-more-architecture .a-rest:after,
+.home-more-architecture .a-admin:after {
+  height: 30px;
+  bottom: -30px;
+}
+
+.home-more-architecture .a-symfony {
+  left: $width+25;
+  top: 242px;
+}
+
+.home-more-architecture .a-rest {
+  left: $width+25;
+  top: 322px;
+}
+
+.home-more-architecture .a-admin {
+  left: $width+25;
+  top: 402px;
+}

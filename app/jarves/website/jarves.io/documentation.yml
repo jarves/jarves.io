@@ -1,0 +1,10 @@
+title: Documentation
+layout: documentation
+sort: 1
+contents:
+    -
+        boxId: 1
+        sort: 0
+        content: '<p>Welcome to Jarves documentation.</p>'
+        type: Text
+        hide: false
