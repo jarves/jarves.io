@@ -1,6 +1,13 @@
+@import "bourbon/bourbon";
+@import 'neat/neat';
+
 .documentation-content-right {
   margin-left: 350px;
   padding-top: 55px;
+  @include media(new-breakpoint(max-width 740px)) {
+    margin-left: 0;
+    padding: 0 10px;
+  }
 }
 
 .documentation-content-left {
@@ -9,7 +16,13 @@
   border-right: 1px dashed silver;
   padding-bottom: 50px;
 
+  @include media(new-breakpoint(max-width 740px)) {
+    float: none;
+    width: auto;
+    text-align: center;
+  }
 }
+
 
 .documentation-navigation {
   > a {
