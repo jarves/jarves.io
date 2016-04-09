@@ -28,13 +28,16 @@ contents:
             ```
             
             ### 2.2 or install all Jarves bundles using composer
-            
+
+            This is currently not supported due to a limitation in PropelBundle, which
+            will be [fixed shortly](https://github.com/propelorm/PropelBundle/pull/408).
+
             ```bash
             composer require jarves/jarves
             composer require jarves/jarves-publication
             composer require jarves/jarves-demotheme
             ```
-            
+
             Activate the bundle in your AppKernel:
             
             ```php
