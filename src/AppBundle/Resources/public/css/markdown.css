@@ -53,7 +53,10 @@
 
 .markdown ol li {
     list-style: decimal inside;
-    margin-bottom: 1em;
+}
+
+.markdown ol {
+    padding-left: 15px;
 }
 
 .markdown li p {

@@ -24,7 +24,7 @@ contents:
             </div>
             ```
 
-            At `{% contents 1 %}` is in the Jarved Editor (Administration -> Pages) now a management interface given, the
-            use can use to place own custom content.
+            At `{% contents 1 %}` is in the Jarves Editor (Administration -> Pages) now a management interface given, the
+            user can use to place own custom content. In the actual website (front end) is the rendered version displayed.
 
             More information can be found in the article [Create A Theme documentation](http://jarves.io/documentation/quick-start/create-a-theme).

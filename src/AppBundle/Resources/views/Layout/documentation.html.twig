@@ -12,11 +12,17 @@
                     <h3><a href="/documentation">Documentation</a></h3>
                     Version: <a href="https://github.com/jarves/jarves">dev-master</a>
                     <div class="documentation-navigation">
-                    {{ navigationLevel(2, 'AppBundle:Navigation:DocumentationSubNavigation.html.twig') }}
+                        {{ navigationLevel(2, 'AppBundle:Navigation:DocumentationSubNavigation.html.twig') }}
                     </div>
                 </div>
                 <div class="documentation-content-right">
-                    {% contents 1 %}
+                    <div>{% contents 1 %}</div>
+
+                    <div class="typo">
+                        <hr>
+                        Found a typo? The website is based on Markdown, please feel free to send us a pull request! :)
+                        <a href="https://github.com/jarves/jarves.io/tree/master/app/jarves/website/jarves.io">github.com/jarves/jarves.io/tree/master/app/jarves/website/jarves.io</a>
+                    </div>
                 </div>
             </div>
         </div>
