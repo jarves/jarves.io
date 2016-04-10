@@ -145,6 +145,10 @@ class DocumentationController extends PluginController
 
     public function objectsDetailAction($objectKey = null)
     {
+        $pageStack = $this->get('jarves.page_stack');
+        $pageStack->getPageResponse()->loadAssetFile('@AppBundle/css/api-doc.scss');
+        $pageStack->getPageResponse()->loadAssetFileAtBottom('@AppBundle/js/api-doc.js');
+
         if ($cache = $this->getCache($cacheKey = 'jarves/documentation/objects/detail/' . $objectKey)) {
             return $cache;
         }
@@ -154,10 +158,6 @@ class DocumentationController extends PluginController
         }
 
         $jarves = $this->get('jarves');
-        $pageStack = $this->get('jarves.page_stack');
-
-        $pageStack->getPageResponse()->loadAssetFile('@AppBundle/css/api-doc.scss');
-        $pageStack->getPageResponse()->loadAssetFileAtBottom('@AppBundle/js/api-doc.js');
 
         $object = $jarves->getConfigs()->getObject($objectKey);
 
@@ -208,13 +208,13 @@ class DocumentationController extends PluginController
 
     public function restApiAction()
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/rest-api')) {
-            return $cache;
-        }
-
         $pageStack = $this->get('jarves.page_stack');
         $pageStack->getPageResponse()->loadAssetFile('@AppBundle/css/api-doc.scss');
         $pageStack->getPageResponse()->loadAssetFileAtBottom('@AppBundle/js/api-doc.js');
+
+        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/rest-api')) {
+            return $cache;
+        }
 
         $handlers = [
             new \Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler,
@@ -313,9 +313,6 @@ class DocumentationController extends PluginController
 
     public function fieldsNavigationAction(Request $request, Node $parentNode)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/fields/navigation')) {
-            return $cache;
-        }
 
         $items = [];
 
@@ -339,16 +336,11 @@ class DocumentationController extends PluginController
         $result = $this->render('AppBundle:Navigation:fields.html.twig', [
             'items' => $items
         ]);
-        $this->setCache($cacheKey, $result);
         return $result;
     }
 
     public function contentTypesNavigationAction(Node $parentNode)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/content-types/navigation')) {
-            return $cache;
-        }
-
         $items = [];
 
         $jarves = $this->get('jarves');
@@ -367,16 +359,11 @@ class DocumentationController extends PluginController
         $result = $this->render('AppBundle:Navigation:fields.html.twig', [
             'items' => $items
         ]);
-        $this->setCache($cacheKey, $result);
         return $result;
     }
 
     public function configurationNavigationAction(Node $parentNode)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/configuration/navigation')) {
-            return $cache;
-        }
-
         $reflection = new \ReflectionClass('Jarves\JarvesBundle');
         $jarvesDir = dirname($reflection->getFileName());
         $jarvesConfigurationFolder = $jarvesDir . '/Configuration/';
@@ -412,16 +399,11 @@ class DocumentationController extends PluginController
         $result = $this->render('AppBundle:Navigation:configurations.html.twig', [
             'items' => $items
         ]);
-        $this->setCache($cacheKey, $result);
         return $result;
     }
 
     public function objectsNavigationAction(Node $parentNode)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/objects/navigation')) {
-            return $cache;
-        }
-
         $items = [];
 
         $jarves = $this->get('jarves');
@@ -440,7 +422,6 @@ class DocumentationController extends PluginController
         $result = $this->render('AppBundle:Navigation:fields.html.twig', [
             'items' => $items
         ]);
-        $this->setCache($cacheKey, $result);
         return $result;
     }
 }
