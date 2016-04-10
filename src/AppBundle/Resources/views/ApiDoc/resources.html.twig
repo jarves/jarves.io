@@ -1,0 +1,32 @@
+
+{% block content %}
+    {% for section, sections in resources  %}
+        {% if section != '_others' %}
+            <div id="section">
+            <h1>{{ section }}</h1>
+        {% endif %}
+        {% for resource, methods in sections %}
+            <div class="resource">
+                <div class="heading">
+                    {% if section == '_others' and resource != 'others' %}
+                        <h2>{{ resource }}</h2>
+                    {% elseif resource != 'others' %}
+                        <h2>{{ resource }}</h2>
+                    {% endif %}
+                </div>
+                <div class="endpoints">
+                    <div class="endpoint">
+                        <div class="operations">
+                            {% for data in methods %}
+                                {% include 'AppBundle:ApiDoc:method.html.twig' %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% if section != '_others' %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

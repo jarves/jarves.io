@@ -1,0 +1,114 @@
+title: Screenshots
+layout: documentation
+sort: 20
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+            # Screenshots
+
+            Please note: Some screenshots are very old.
+
+            General
+            -------
+
+            Administration login
+            ![Administration login](bundles/app/images/screenshots/admin-login.png)
+
+            Jarves Editor
+            ![Administration Frontend Edit](bundles/app/images/screenshots/admin-frontend-edit.png)
+
+            File manager
+            ![Administration File manager](bundles/app/images/screenshots/admin-files-context-image.png)
+
+            File manager Image View
+            ![Administration File manager](bundles/app/images/screenshots/admin-files-context-image2.png)
+
+            Nodes
+            ![Administration Nodes](bundles/app/images/screenshots/admin-nodes.png)
+
+            CRUD Framework
+
+            ![Administration CRUD Framework Window List](bundles/app/images/screenshots/admin-list.png)
+            ![Administration CRUD Framework Window](bundles/app/images/screenshots/admin-users.png)
+
+            Object chooser
+            ![Object chooser](bundles/app/images/screenshots/admin-object-chooser.png)
+
+
+            Extension Editor
+            ----------------
+
+            List
+            ![List](bundles/app/images/screenshots/admin-extensioneditor.png)
+
+            Create Bundle
+            ![Create Bundle](bundles/app/images/screenshots/admin-extensioneditor-create.png)
+
+            General Tab
+            ![General Tab](bundles/app/images/screenshots/admin-extensioneditor-general.png)
+
+            EntryPoints Tab
+            ![EntryPoints Tab](bundles/app/images/screenshots/admin-extensioneditor-entrypoints.png)
+
+            Objects Tab
+            ![Objects Tab ](bundles/app/images/screenshots/admin-extensioneditor-objects.png)
+
+            Objects Tab Fields
+            ![Objects Tab Fields](bundles/app/images/screenshots/admin-extensioneditor-objects-fields.png)
+
+            Windows Tab
+            ![Windows Tab](bundles/app/images/screenshots/admin-extensioneditor-windows.png)
+
+            Plugins Tab
+            ![Plugins Tab](bundles/app/images/screenshots/admin-extensioneditor-plugins.png)
+
+
+            CRUD View Editor
+            ------------------
+
+            General Tab
+            ![General Tab](bundles/app/images/screenshots/admin-windoweditor-general.png)
+
+            Edit/Add Tab
+            ![Edit/Add Tab](bundles/app/images/screenshots/admin-windoweditor-edit-add.png)
+
+            List Tab
+            ![List Tab](bundles/app/images/screenshots/admin-windoweditor-list.png)
+
+            Class Methods Tab
+            ![Class Methods Tab](bundles/app/images/screenshots/admin-windoweditor-classmethods1.png)
+
+            Class Methods Tab 2
+            ![Class Methods Tab 2](bundles/app/images/screenshots/admin-windoweditor-classmethods2.png)
+
+
+            Permission Management
+            ------------------
+
+            Entry points
+            ![Entry points](bundles/app/images/screenshots/admin-permission-management1.png)
+
+            Objects 1
+            ![Objects 1](bundles/app/images/screenshots/admin-permission-management2.png)
+
+            Objects 2
+            ![Objects 2](bundles/app/images/screenshots/admin-permission-management3.png)
+
+
+
+            Stuff
+            ------------------
+
+            Errors/Exception Debug View
+
+            ![Errors/Exception Debug View](bundles/app/images/screenshots/admin-logs.png)
+
+            ![Errors/Exception Debug View](bundles/app/images/screenshots/admin-logs-detail.png)
+
+            REST API
+
+            ![REST API](bundles/app/images/screenshots/rest-api.png)
+
+            ![REST API](bundles/app/images/screenshots/rest-api-2.png)

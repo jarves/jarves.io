@@ -1,0 +1,22 @@
+title: REST API
+layout: documentation
+sort: 40
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # REST API
+
+          Below you find the complete REST API documentation. Sandbox is disabled, but enabled in your
+          REST API documentation, which comes with every Jarves installation. Just log in to the administration
+          and open http://127.0.0.1:8080/jarves/api.
+
+          Object CRUD routes are not included here. Please open for object REST API description the object at the left side.
+    -
+        boxId: 1
+        content:
+            bundle: AppBundle
+            plugin: documentation-rest-api
+            options: {  }
+        type: plugin

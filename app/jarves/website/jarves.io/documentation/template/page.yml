@@ -1,0 +1,23 @@
+title: Page
+layout: documentation
+sort: 5
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+            # Page
+
+            ## `currentUrl()`
+
+            Return the current url of the active page.
+
+            ## `page | url`
+
+            Returns a url of the given page.
+
+            ## `page | isActive(exact = false)`
+
+            Returns true when the given page is active. Active means: Is either the current page or one of its parents.
+
+            If exact=true then the check is only against the current page, not its parents.

@@ -15,7 +15,7 @@ contents:
             Level 1 means (`{{ navigationLevel(1)}}`) that the root level of pages (level directly under your domain)
             is rendered as a list of `<a>` elements.
 
-            If you specify a level for example a level of 2, then all **children** pages of __current active page__ at level 1 will be rendered.
+            If you specify a higher level for example a level of 2, then all **children** pages of __current active page__ at level 1 will be rendered.
 
             Examples:
 

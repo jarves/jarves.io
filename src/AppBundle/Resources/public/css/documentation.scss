@@ -4,9 +4,36 @@
 .documentation-content-right {
   margin-left: 350px;
   padding-top: 55px;
+
   @include media(new-breakpoint(max-width 740px)) {
     margin-left: 0;
     padding: 0 10px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+
+    .bookmarker {
+      width: 25px;
+      content: '';
+      position: absolute;
+      left: -18px;
+      height: 40px;
+      display: inline-block;
+      visibility: hidden;
+      font-size: 14px;
+      cursor: pointer;
+      padding-top: 1px;
+      &:hover {
+        visibility: visible;
+      }
+    }
+
+    &:hover {
+      .bookmarker {
+        visibility: visible;
+      }
+    }
   }
 }
 
@@ -21,6 +48,11 @@
     width: auto;
     text-align: center;
   }
+}
+
+.field-description {
+  padding: 5px 0px;
+  border-bottom: 1px dashed #D4D4D4;
 }
 
 .typo {
@@ -56,8 +88,11 @@
 
 .documentation-navigation-sub {
   padding-left: 25px;
+  @include media(new-breakpoint(max-width 740px)) {
+    padding-left: 0;
+  }
 
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
 
   > .item {
@@ -66,7 +101,7 @@
 
   a.active {
     position: relative;
-    left: -12px;
+    left: -11px;
     color: gray;
 
     &:before {
@@ -84,6 +119,7 @@ table.table {
   width: 100%;
   td {
     padding: 2px;
+    vertical-align: top;
     font-size: 14px;
   }
 
@@ -94,6 +130,35 @@ table.table {
   }
 }
 
-.description {
-  color: #6e6e6e;
+.table-left-row {
+  width: 100%;
+  th {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  td {
+    padding-left: 10px;
+  }
+}
+
+p.description {
+  color: #949494;
+}
+
+h3, h4 {
+  .sub {
+    color: gray;
+    font-size: smaller;
+  }
+}
+
+div.field-option {
+  padding: 5px 0;
+  border-bottom: 1px dashed silver;
+
+  > h4:first-child{
+    margin: 0;
+    margin-bottom: 5px;
+  }
 }

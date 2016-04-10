@@ -1,0 +1,28 @@
+title: Breadcrumb
+layout: documentation
+sort: 4
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+            # Breadcrumb Navigation
+
+            `breadcrumb(view = 'JarvesBundle:Default:breadcrumb.html.twig')`
+            returns a list of `<a>` from the root level to current active page.
+
+            Per default `JarvesBundle:Default:breadcrumb.html.twig` is used as template, but you can overwrite it and
+            use you custom breadcrumb template.
+
+            Example generation:
+
+            ```
+            <nav class="breadcrumb">
+                <a href="/">jarves.io</a>
+
+                » <a href="/documentation">Documentation</a>
+                » <a href="/documentation/template">Template</a>
+
+                » <a href="/documentation/template/breadcrumb">Breadcrumb</a>
+            </nav>
+            ```

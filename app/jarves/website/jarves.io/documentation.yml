@@ -11,34 +11,69 @@ contents:
           [![Build Status](https://travis-ci.org/jarves/jarves.png?branch=master)](https://travis-ci.org/jarves/jarves)
           [![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 
-          Installation
-          ------------
+          ## What is Jarves?
+
+          Jarves is a Symfony bundle, you can use in your Symfony project additionally to your regular project.
+          Jarves is a content management system and rapid application framework.
+
+          ### Why Content Management System?
+
+          Jarves provides a optional administration gui you can use to give your users the ability to manage/see:
+
+           1. Pages and domains (move, add, remove)
+           1. Static content (Text via WYSIWYD)
+           2. Files (upload, move, preview, edit images, etc)
+           3. Users, groups, Permissions (very detail permission system when you work with Jarves object model)
+           4. Objects (from the RAD/crud system)
+           5. Bundle configurations
+           6. View logs/dashboard
+
+          You can limit the administration gui with the detailed permission ACL system. You can give you users only
+          the ability to manage files (maybe with limited file extensions), or only to manage content, or extend it
+          a bit so they can also manage users, groups etc. You are completely free. Since the ACL system is based
+          on users or groups you can setup almost all permission scenarios.
+
+          The administration itself communicates with Jarves completely through a RESTful API, so you could even build
+          your own administration on top of it.
+
+          ### Why Rapid Application Framework?
+
+          Jarves provides beside solid interfaces for regular content management (users, groups, content, pages, domains, files, etc)
+          also a system where you can quickly define own objects and CRUD views.
+
+          This gives you the power to quickly give your customer a administration interface to manage some content.
+          Content can be anything: Cars, products, categories, ... You only need to define the object itself. Create for a example
+          a Car object, define some properties like id (number, primary key), title(string) and color (string) and let
+          Jarves generate for your the Propel (ORM) schema, its ORM models and update the database schema with its commands.
+          Now you can create in no one time crud views using yaml and choose between all available [Form Fields](documentation/fields).
+
+          With the ability to create relations between objects you can quickly build whole application in minutes. In other systems
+          or pure Symfony you would need days to implement the same because you would need to write every html input field
+          (or Symfony form & validation), every SQL table or ORM model, by your bare hands - not to consider the whole interface with login
+          and permission system etc you would need to develop beforehand.
+
+          ## Installation
 
           This describes the customized installation, usually used by developers.
 
-          Read the [development installation documentation](http://jarves.io/documentation/quick-start/installation).
+          We don't have yet ready-to-use zip files. You still have to install Symfony already, add Jarves as bundle and
+          install all dependencies via composer.
 
-          Read the [Create A Theme documentation](http://jarves.io/documentation/quick-start/create-a-theme), to create layouts for your website.
+          Read the [development installation documentation](documentation/quick-start/installation).
 
-          Extensions
-          ----------
+          Read the [Create A Theme documentation](documentation/cook-book/create-a-theme), to create layouts for your website.
 
-          This is how a theme extension looks like: https://github.com/jarves/jarves-demotheme
-
-          This is how a more details news extension looks like: https://github.com/jarves/jarves-publication
-
-          Requirements
-          ------------
+          ## Requirements
 
           1. PHP 5.6+
           2. Symfony 3
           3. *nix OS (Linux, BSD, OSX)
           4. PHP extensions: PDO, mbstring, gd, zip
           5. MySQL, PostgreSQL or SQLite
+          6. sass if you want to use the scss auto-transpiler
 
 
-          Features
-          --------
+          ## Features
 
            - Based on Symfony
            - Based on Propel ORM (Propel supports MySQL, PostgreSQL, SQLite, MSSQL, and Oracle), http://www.propelorm.org

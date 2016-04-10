@@ -1,0 +1,35 @@
+title: Contact
+sort: 5
+visible: false
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # Contact
+
+          Marc J. Schmidt<br/>
+          [marcjschmidt.de](http://marcjschmidt.de)<br/>
+          Elbchaussee 240A<br/>
+          22605 Hamburg<br/>
+
+
+          marc [at] marcjschmidt.de
+
+
+          ## For Germans, Haftungshinweis
+
+          Alle Informationen, Daten und Angebote dieser Website wurden sorgfältig geprüft und werden regelmäßig aktualisiert.
+          Eine Haftung oder Gewähr für die Aktualität, Richtigkeit, Vollständigkeit oder Eignung für bestimmte Verwendungszwecke
+          der zur Verfügung gestellten Informationen ist jedoch ausgeschlossen.
+
+          Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der
+          verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+
+          Alle innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken unterliegen uneingeschränkt den
+          Bestimmungen des jeweils gültigen Kennzeichenrechts und den Eigentumsrechten der jeweiligen eingetragenen Eigentümer.
+
+          Diese Website nutzt Google Analytics. Durch den Besuch der Webseite können Informationen über Ihren Zugriff (Datum,
+          Uhrzeit, betrachtete Seite) gespeichert werden. Diese Daten gehören nicht zu den personenbezogenen Daten, sondern sind
+          anonymisiert. Sie werden ausschließlich zu statistischen Zwecken ausgewertet. Eine Weitergabe an Dritte, zu kommerziellen
+          oder nichtkommerziellen Zwecken, findet nicht statt.

@@ -1,0 +1,48 @@
+title: Content Types
+layout: documentation
+sort: 30
+contents:
+    -
+        boxId: 1
+        content:
+            bundle: AppBundle
+            plugin: documentation-content-type-detail
+        type: plugin
+    -
+        # stop output, when plugin: documentation-field-detail already found a field slug it knows
+        boxId: 1
+        type: stopper
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # Content Types
+
+          Content types are in Javes types of different content structure that is rendered in the front end, in the actual website.
+          This can be simple text, html, markdown, more sophicisticated content like image gallery.
+
+          The classical page content can be added into a page using the Jarves page editor
+          (Administration > Pages, or Administraton > Nodes > Page > Tab 'Content'), with the website yaml format
+          or using the Content (Jarves\Model\Content) model directly.
+
+          On the left navigation under "Content Types" you can see all available content types that come pre installed
+          with Jarves. You can also add custom content types using the [Content Type](documentation/configuration/contentType)
+          configuration.
+
+          In the Jarves page editor a user can add, move (drag'n'drop) and delete so called 'content elements' (which are instances of
+          a content type).
+
+          Rich Text editing in the Jarves page editor:
+
+          ![Jarves Editor, Add Content](bundles/app/images/content-types/rich-text-editing.png)
+
+
+          If a user presses on the little '+' sign at the place where a `{% contents 1 %}` was in the layout, it pops up following modal:
+
+          ![Jarves Editor, Add Content](bundles/app/images/content-types/overview-add-content.png)
+
+
+
+          Content types are rendered with the Jarves\ContentRender class. This is done automatically in the Jarves\PageResponse.
+          However, if you want to use content types with its user interface also at your object, you can use
+          the field type [`contentElements`](documentation/fields/contentElements).

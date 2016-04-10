@@ -6,6 +6,10 @@
             {{ render(controller('AppBundle:Documentation:fieldsNavigation', {parentNode: children})) }}
         {% elseif children.urn == 'configuration' %}
             {{ render(controller('AppBundle:Documentation:configurationNavigation', {parentNode: children})) }}
+        {% elseif children.urn == 'content-types' %}
+            {{ render(controller('AppBundle:Documentation:contentTypesNavigation', {parentNode: children})) }}
+        {% elseif children.urn == 'objects' %}
+            {{ render(controller('AppBundle:Documentation:objectsNavigation', {parentNode: children})) }}
         {% elseif children.getLinks() %}
             <div class="documentation-navigation-sub">
             {% for children in children.getLinks() %}

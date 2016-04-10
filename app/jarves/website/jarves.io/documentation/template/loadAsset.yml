@@ -8,7 +8,7 @@ contents:
         content: |
             # LoadAsset
 
-            `{{ loadAsset(path) }}` is a method to inject javascript, css or scss file into your PageResponse.
+            `{{ loadAsset(path, contentType = null) }}` is a method to inject javascript, css or scss file into your PageResponse.
 
             Example:
 
@@ -22,6 +22,12 @@ contents:
               {% contents 1 %}
             </div>
             ```
+
+            There is also `{{ loadAssetAtBottom(path, contentType = null) }}` with the same behavior available, except the fact, that assets
+            will be added directly before closing `</body>`.
+
+            If you have no normal file names like `js/app.js` but something like `js/app` you need to specify the
+            second parameter to tell Jarves which asset load it should apply. `{{loadAsset('js/app', 'text/javascript') }}`.
 
             ## Path
 

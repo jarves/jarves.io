@@ -1,0 +1,9 @@
+<h2>Content Type <span class="arrow-right"></span> {{ contentType.label }}
+    <div class="sub">
+        {{  contentType.id }} {% if contentType.id != 'stopper' %}(<code>@{{ contentType.service }}</code>){% endif %}
+    </div>
+</h2>
+
+<div>
+    {{ contentType.description|markdowner }}
+</div>

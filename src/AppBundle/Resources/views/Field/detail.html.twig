@@ -1,15 +1,48 @@
-<h2>Field <span class="arrow-right"></span> {{ type.name }}
+<h1><a href="documentation/fields">Form Fields</a> <span class="arrow-right"></span> {{ typeConfig.label }}
     <div class="sub">
-        {{ extractor.shortClassName }}
+        {{ typeConfig.id }} (<code>@{{ typeConfig.service }}</code>)
     </div>
-</h2>
+</h1>
 
-<p>
-    Source &raquo;
-    <a href="https://github.com/jarves/jarves/blob/master/Admin/FieldTypes/{{ extractor.shortClassName }}.php">Jarves\Admin\FieldTypes\{{ extractor.shortClassName }}</a>.
+<div class="field-description">
+    {{ typeConfig.description|markdowner }}
+</div>
+
+
+{% if not typeConfig.userInterfaceOnly %}
+<p class="description">
+    Backend &raquo; <a href="https://github.com/jarves/jarves/blob/master/Admin/FieldTypes/{{ extractor.shortClassName }}.php">Jarves\Admin\FieldTypes\{{ extractor.shortClassName }}</a><br/>
+    Frontend &raquo; {{ typeConfig.javascript|default('@Jarves/admin/js/jarves/FieldTypes/' ~ typeConfig.id|capitalize ~ '.js' ) }}
+</p>
+{% endif %}
+
+<h3>Options</h3>
+
+<p class="description">
+Please note that all fields have common options, that are not displayed on this page.
+Visit <a href="documentation/fields#Common_Options_List">Fields Common Options List</a> for more information.
 </p>
 
-{% if extractor.instanceOfClass('Jarves\\Admin\\FieldTypes\\TypeUserInterfaceOnly') %}
+{% if typeConfig.options %}
+
+    {% for field in typeConfig.options  %}
+        <div class="field-option">
+            <h4 class="field"><code>{{ field.id }}</code>
+                <div class="sub">{{ field.label }} ({{ field.type }})</div>
+            </h4>
+            {{ field.description|markdowner }}
+        </div>
+
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="description">No additional options available for this field.</div>
+{% endif %}
+
+
+{% if typeConfig.userInterfaceOnly %}
     <h4>User Interface only.</h4>
 
     This field has not model counterpart, and thus does not generate any model related stuff nor saves it content to the database.

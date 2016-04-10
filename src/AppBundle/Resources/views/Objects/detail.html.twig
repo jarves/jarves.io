@@ -1,0 +1,74 @@
+<h1><a href="documentation/objects">Objects</a> <span class="arrow-right"></span> {{ objectConfig.key }}
+    <div class="sub">
+        {{ objectConfig.label|default(objectConfig.id) }} (<code>@{{ objectConfig.storageService }}</code>)
+    </div>
+</h1>
+
+<p class="description">
+{{ objectConfig.desc|markdowner }}
+</p>
+
+<h2>Information</h2>
+
+<table class="table-left-row">
+    <tr>
+        <th>Storage</th>
+        <td>{{ objectConfig.storageService }}</td>
+    </tr>
+    <tr>
+        <th>Table</th>
+        <td>{{ objectConfig.table }}</td>
+    </tr>
+    <tr>
+        <th>CrudService</th>
+        <td>{{ objectConfig.crudService}}</td>
+    </tr>
+    <tr>
+        <th>Default selection</th>
+        <td>{{ objectConfig.defaultSelection}}</td>
+    </tr>
+    <tr>
+        <th>Blacklist selection</th>
+        <td>{{ objectConfig.blacklistSelection|default('None')}}</td>
+    </tr>
+    <tr>
+        <th>Multi language</th>
+        <td>{{ objectConfig.multiLanguage|json_encode }}</td>
+    </tr>
+    <tr>
+        <th>Nested</th>
+        <td>{{ objectConfig.nested|json_encode }}</td>
+    </tr>
+</table>
+
+<h2>Fields</h2>
+
+{% for field in objectConfig.getFields() %}
+<div class="field-option">
+    <h4><code>{{ field.id }}{% if field.required %}*{% endif %}</code>
+        <span class="sub"> (<a href="documentation/fields/{{ field.type }}">{{ field.type }}</a>) {{ field.label }}
+            {% if field.primaryKey %} [primaryKey]{% endif %}
+            {% if field.autoIncrement %} [autoIncrement]{% endif %}
+        </span>
+    </h4>
+    <p class="description">{{ field.description|markdowner }}</p>
+</div>
+{% endfor %}
+
+<h2>Relations</h2>
+
+{% for relation in objectConfig.getRelations() %}
+<div class="field-option">
+    <h4><code>{{ relation.name }}</code>
+        <span class="sub">{{ relation.type }} -> <a href="documentation/objects/{{ relation.foreignObjectKey }}">{{ relation.foreignObjectKey }}</a>
+        </span>
+    </h4>
+</div>
+{% endfor %}
+
+<h2>REST APIs</h2>
+
+<div class="inline-nelmio-api-doc inline-nelmio-api-doc-single-object">
+    {{ apiDoc|raw }}
+</div>
+

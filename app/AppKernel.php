@@ -26,8 +26,6 @@ class AppKernel extends Kernel
             new Jarves\JarvesBundle(),
             new Jarves\DemoTheme\JarvesDemoThemeBundle(),
             new Jarves\Publication\JarvesPublicationBundle(),
-
-            new AppBundle\MyBundleBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,7 +1,7 @@
 {% include 'AppBundle:Layout:header.html.twig' %}
 
 {{ loadAsset('@AppBundle/css/documentation.scss') }}
-{{ loadAsset('@AppBundle/js/doc.js') }}
+{{ loadAssetAtBottom('@AppBundle/js/doc.js') }}
 
 <div class="main-wrapper">
     <section class="content">
@@ -16,6 +16,8 @@
                     </div>
                 </div>
                 <div class="documentation-content-right">
+                    {{ breadcrumb() }}
+
                     <div>{% contents 1 %}</div>
 
                     <div class="typo">
@@ -24,6 +26,7 @@
                         <a href="https://github.com/jarves/jarves.io/tree/master/app/jarves/website/jarves.io">github.com/jarves/jarves.io/tree/master/app/jarves/website/jarves.io</a>
                     </div>
                 </div>
+                <div class="break"></div>
             </div>
         </div>
     </section>

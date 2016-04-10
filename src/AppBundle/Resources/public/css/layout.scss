@@ -26,6 +26,27 @@ $mainColor: #041114;
 
 @import "home-architecture";
 
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400);
+
+body, html {
+  background-color: #041114;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  line-height: 190%;
+}
+
+b, strong {
+  font-weight: 400;
+}
+
 code, .hljs {
   font-family: "Source Code Pro", monospace;
   font-weight: 400;
@@ -105,24 +126,6 @@ pre.fancy{
   color: white;
 }
 
-body, html {
-  background-color: #041114;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  padding: 0;
-  margin: 0;
-  color: white;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
-  font-smooth: never;
-  line-height: 190%;
-}
-
-b, strong {
-  font-weight: 400;
-}
-
 header {
   padding: 30px;
   height: 120px;
@@ -145,7 +148,7 @@ header {
   margin: auto;
 }
 
-header nav {
+header nav.main {
   float: right;
   @include media(new-breakpoint(max-width 740px)) {
     float: none;
@@ -164,12 +167,12 @@ header .logo {
   width: 60px;
 }
 
-nav {
+nav.main {
   margin: 30px 0;
   padding: 0;
 }
 
-nav a {
+nav.main a {
   list-style-type: none;
   display: inline-block;
   margin-left: 20px;
@@ -178,8 +181,8 @@ nav a {
   }
 }
 
-nav a,
-nav a:link {
+nav.main a,
+nav.main a:link {
   text-decoration: none;
   color: white;
   text-transform: uppercase;
@@ -187,14 +190,14 @@ nav a:link {
   font-weight: 400;
 }
 
-nav a.active,
-nav a.active:link,
-nav a.active:hover {
+nav.main a.active,
+nav.main a.active:link,
+nav.main a.active:hover {
   color: lighten($mainColor, 50%);
 }
 
 footer a:hover,
-nav a:hover {
+nav.main a:hover {
   color: gray;
 }
 
@@ -234,6 +237,7 @@ h3, h4, h5 {
   height: 750px;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .home-banner-bg-top {
@@ -260,7 +264,8 @@ h3, h4, h5 {
 
 .home-banner-page-1 .home-banner-text {
   padding-top: 106px;
-  font-size: 1.3rem;
+  font-weight: 400;
+  font-size: 20px;
   position: relative;
   text-align: center;
   color: white;
@@ -445,9 +450,9 @@ img.home-banner-logo-bg {
 
 .home-more, .default-content {
   background-color: #f0f0f0;
-  color: #041114;
-  overflow: hidden;
+  color: #5C5E5F;
   padding-top: 15px;
+  padding-bottom: 40px;
 }
 
 .home-more .wrapper {

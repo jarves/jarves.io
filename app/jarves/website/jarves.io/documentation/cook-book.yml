@@ -1,0 +1,11 @@
+title: Cook Book
+layout: documentation
+sort: 10
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # Cook book
+
+          Please see at the left hand site all cook book articles.

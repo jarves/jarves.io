@@ -1,0 +1,114 @@
+title: Objects
+layout: documentation
+sort: 35
+contents:
+    -
+        boxId: 1
+        content:
+            bundle: AppBundle
+            plugin: documentation-objects-detail
+        type: plugin
+
+    -
+        # stop output, when plugin: documentation-field-detail already found a field slug it knows
+        boxId: 1
+        type: stopper
+
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # Objects
+
+          Objects are in Jarves structured data, like a SQL table. Jarves uses per default Propel as ORM, which hides all SQL magic.
+
+          A object consists of some meta information like [label, id, storage, etc](documentation/configuration/object),
+          and of [fields](documentation/fields).
+
+          You can build upon objects very easily crud views using yml.
+          (Example [Jarves/Group CRUD](https://github.com/jarves/jarves/blob/master/Resources/config/crud/group.yml))
+
+          Abstraction for REST interface is:
+
+          ```
+          1. REST API
+          2. ObjectCrud controller (builds the REST API and crud views/routes)
+          3. ObjectStorage (Jarves\Storage\Propel or Jarves\Storage\AbstractStorage)
+          4. Propel (per default)
+          5. SQL Database
+          ```
+
+          Abstraction for internal object interface is:
+
+          ```
+          1. Jarves\Objects interface (`@jarves.objects`)
+          2. ObjectStorage (Jarves\Storage\Propel or Jarves\Storage\AbstractStorage)
+          3. Propel (per default)
+          4. SQL Database
+          ```
+
+          ## Object manipulation
+
+          You can query, add, update or remove objects via several interfaces.
+
+          1. REST API
+          2. Jarves\Objects interface
+          3. Propel classes directly
+          4. SQL Database (you shouldn't do that)
+
+          Each abstraction does its very worthy thing, please do not choose the lowest, because it's the fastest,
+          because you could easily corrupt the application state.
+
+          If you for example change table rows of a nested object in a SQL database directly, you need to make sure
+          that the nested set model is still intact, which means `rgt`, `lft` and `lvl` are correctly set.
+
+          ## REST API
+
+          In Jarves the whole administration accesses the application and all its controllers and objects using a RESTful API.
+          That means you could easily access all information too using the HTTP protocol. See [REST-API(documentation/rest-api) for more information.
+
+          ## ObjectCrud (Jarves\Controller\ObjectCrudController)
+
+          This controller is used to build all REST routes for every object. You can of course subclass this controller
+          for your object using the `crudService` property at [object configuration](documentation/configuration/object).
+
+          ## ObjectStorage
+
+          If you use Propel as storage for your objects, you usually don't have to change here much. However,
+          if you have objects that aren't stored with Propel, you need to write your object storage class itself.
+          Examples are given in [/Users/marc/bude/jarves.io/app/jarves/website/jarves.io/documentation/objects.yml](https://github.com/jarves/jarves/tree/master/Storage).
+
+          You can change the storage service of a object using the `storageService` property at [object configuration](documentation/configuration/object).
+
+          ## Jarves\Objects interface
+
+          If you want to access objects for your website/fronte end, you should use this interface as it handles also permission management (all applied ACLs)
+          and returns objects as array. If you don't need ACL support, you can directly access objects using Propel.
+
+          Example:
+
+          ```php
+
+          $objects = $container->get('jarves.objects');
+
+          $objects->getList('jarves/node', ['type' => 0]); //returns all pages
+          $objects->getList('jarves/node', ['domainId' => 1]); //returns all nodes of domain 1
+          $objects->getList('jarves/node', ['domainId' => 1], ['fields' => 'title']); //returns all pages, only the title, of domain 1
+
+          ```
+
+          This interfaces provides much more methods you can use to manipulate and query normalized objects data.
+
+          For more information about this interface, take a look at the well documanted class:
+          [github.com/jarves/jarves/blob/master/Objects.php](https://github.com/jarves/jarves/blob/master/Objects.php).
+
+          ## Propel
+
+          If you want to change objects fast, use Propel classes. They have a excellent documentation:
+          [propelorm.org/documentation/03-basic-crud.html](http://propelorm.org/documentation/03-basic-crud.html). All models
+          are stored in Jarves\Model\. Example `$node = new Jarves\Model\Node();` or `$allNodes = Jarves\Model\NodeQuery::create()->find()`;
+
+          Please note: When you change objects directly using Propel, make sure all caches are correctly resetted,
+          so Jarves does not work with outdated stuff.
+
+

@@ -19,6 +19,28 @@
           </route>
         </routes>
       </plugin>
+      <plugin id="documentation-content-type-detail">
+        <label>Documentation Field Detail</label>
+        <controller>AppBundle:Documentation:contentTypeDetail</controller>
+        <routes>
+          <route pattern="{className}">
+            <requirement key="className">[a-zA-Z]+</requirement>
+          </route>
+        </routes>
+      </plugin>
+      <plugin id="documentation-objects-detail">
+        <label>Documentation Objects Detail</label>
+        <controller>AppBundle:Documentation:objectsDetail</controller>
+        <routes>
+          <route pattern="{objectKey}">
+            <requirement key="objectKey">[a-zA-Z]+/[a-zA-Z]+</requirement>
+          </route>
+        </routes>
+      </plugin>
+      <plugin id="documentation-rest-api">
+        <label>Documentation REST API</label>
+        <controller>AppBundle:Documentation:restApi</controller>
+      </plugin>
     </plugins>
   </bundle>
 </config>

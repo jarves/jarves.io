@@ -1,6 +1,6 @@
-title: Fields
+title: Form Fields
 layout: documentation
-sort: 2
+sort: 40
 contents:
     -
         boxId: 1
@@ -8,3 +8,141 @@ contents:
             bundle: AppBundle
             plugin: documentation-field-detail
         type: plugin
+
+    -
+        # stop output, when plugin: documentation-field-detail already found a field slug it knows
+        boxId: 1
+        type: stopper
+
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # Form Fields
+
+          A Jarves field is like a html input field, but usually with more options. Jarves fields are used everywhere
+          in the whole Jarves administration: In forms, in CRUD views, in the bundle editor etc.
+
+          You can use Jarves fields as well in CRUD views or for configuration purposes of your mount driver,
+          theme options, custom [content types](documentation/content-types) and more.
+
+          A Jarves field is either defined in Javascript directly by a JSON, in a crud view configuration file as yaml,
+          or in the configuration as xml.
+
+          ### Model vs Interface
+
+          A field is primarily only a user interface field. But if you work with fields in the context of object fields
+          then the field defines also the internal datastructure of the object.
+
+          For example, if you have an object with a field like below (name `fieldName`, type `text`) then this object will
+          get a field with name `fieldName` and internal data represented in the 'Object changed' -> 'Added Fields' in the detail
+          view of a field in this documentation. Normally, all objects use Propel as storage service, so the object will have
+          a column named `fieldName` from type `varchar` in your database.
+
+          ### Example
+
+          YAML:
+          ```yml
+          fieldName:
+              type: text
+              description: This is a awesome input field
+          ```
+
+          XML:
+          ```xml
+          <field id="fieldName" type="text">
+            <description>This is a wesome input field</description>
+          </field>
+          ```
+
+          Javascript:
+          ```javascript
+
+          new jarves.Field({
+            type: 'text',
+            description: 'This is a wesome input field'
+          }, htmlContainerElement, 'fieldName');
+
+          //or in a jarves.Form
+          new jarves.Form({
+            fieldName: {
+              type: 'text',
+              description: 'This is a wesome input field'
+            }
+          });
+          ```
+
+
+          ### Options
+
+          All fields have common options you can use to change the way the fields works.
+
+          Usually, fields bring also options you can change. These options are passed as a array `options`.
+
+          Example of field specific options:
+
+          ```yml
+          fieldName:
+              type: text
+              description: This is a awesome input field
+              options:
+                  modifier: ucfirst
+          ```
+
+          ```xml
+          <field id="fieldName" type="text">
+            <description>This is a wesome input field</description>
+            <options>
+              <option key="modified">ucfirst</option>
+            </options>
+          </field>
+          ```
+
+          ### Common Options List
+
+          Below you see a list of options all fields have in common.
+
+          Field with * are required.
+
+          ##### id (string)
+
+          This is usualy automatically set in yml and json representation. However, in XML format you need to provide
+          the id as attribute. In yml and json the id comes from the array key.
+
+          ##### label (string)
+          Default: empty
+
+          A label you can specify, which is show above the actual input field.
+
+          ##### description (string)
+          Default: empty
+
+          A description which is shown under the label if specified.
+
+          ##### type* (string)
+
+          A type, usually lowercased, which defines which field should be loaded. A list of all available types can be
+          found in the [Adminisraton/Crud Fields](documentation/fields) navigation left.
+
+
+          ##### children (array)
+
+          An array of field definitions as children.
+
+          Example
+
+          ```yml
+          fieldName:
+              type: text
+              description: This is a awesome input field
+              children:
+                  fieldName2:
+                      type: text
+                      description: Another awesome field
+                  fieldName3:
+                      type: text
+                      description: Yet another awesome field
+
+          ```
+
+          **Even more options** can be found in the [Field Configuration page](documentation/configuration/field).

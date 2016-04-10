@@ -1,0 +1,134 @@
+title: File Based Website
+layout: documentation
+sort: 1
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # File Based Website
+
+          File based website makes sense for two use cases:
+
+          1. You want to store basic content like domain, pages, page contents and files in a version control system.
+          2. You want to manage basic content through yml and mainly markdown files, without using the administration page editor.
+
+          The latter is good for simple websites, where several people are involved and deployment is done using a version control system checkout.
+
+          In Jarves, file based websites aren't really a static page with only files, because there is still a database behind Jarves.
+          However, Jarves provides you an export and an import command you can use to give you the advantages of a static page site.
+
+          ## Export website
+
+          `php bin/console jarves:content:export` exports into `app/jarves/website/<domainName>/` all your domains, pages,
+          page contents and file references (files itself are no included, but in `web/` which need to be stored either in git or other services).
+
+          The structure is like below:
+
+          ```bash
+          $ tree app/jarves/website/
+          app/jarves/website/
+          ├── jarves.io
+          │   ├── documentation
+          │   │   ├── configuration.yml
+          │   │   ├── content-types.yml
+          │   │   ├── cook-book
+          │   │   │   └── static-page.yml
+          │   │   ├── fields.yml
+          │   │   ├── quick-start
+          │   │   │   ├── create-a-theme.yml
+          │   │   │   ├── installation.yml
+          │   │   │   ├── screenshots.yml
+          │   │   │   └── test-suite.yml
+          │   │   ├── quick-start.yml
+          │   │   ├── template
+          │   │   │   ├── contents.yml
+          │   │   │   ├── loadAsset.yml
+          │   │   │   └── navigation.yml
+          │   │   └── template.yml
+          │   ├── documentation.yml
+          │   ├── download.yml
+          │   ├── home
+          │   │   └── article.yml
+          │   ├── home.yml
+          │   ├── news.yml
+          │   └── support.yml
+          └── jarves.io.yml
+          ```
+
+          On the first level are all domains with a `<domainName>.yml` file and a folder `<domainName>/`.
+
+          In the domain.yml file is the domain object as yml format.
+          Please note: What you define here is a domain object, which reference can be found at [objects/domain](documentation/objects/domain).
+
+          ```yml
+          domain: jarves.io
+          lang: en
+          master: true
+          alias: 127.0.0.1, dev.jarves.io, stage.jarves.io
+          resourceCompression: false
+          path: /
+          searchIndexKey: ba405fabbf88b918cd4f8ff5fa9da6fd
+          theme: jarves
+          titleFormat: '%title% | Jarves - The Symfony CMS and RAD Framework'
+          startnode: home
+          ```
+
+          Please note: `startnode` has here a special meaning: Its a file reference to a page yml. `home` means `<domainName>/home.yml`,
+          whereas `home/article` means `<domainName>/home/article.yml`. Make sure here is stored the correct reference otherwise
+          your domain does not have a startnode and will therefore return no website at the front end. (if you have other routes defined like
+          in the pre installed AppBundle, you will see the hello world of Symfony)
+
+          All above the first level are the actual pages with its content. The file name and its path (folder structure)
+          represent the url stucture of your site.
+
+          A <page-url>.yml in the `<domainName>/` folder could look like below. Please note: What you define here is a
+           node object, which reference can be found at [objects/node](documentation/objects/node).
+
+          ```yml
+          title: Static Page
+          layout: documentation
+          sort: 1
+          contents:
+              -
+                  boxId: 1
+                  type: markdown
+                  content: |
+                    # Static Page
+
+                    My markdown content ....
+              -
+                  boxId: 1
+                  type: html
+                  content: |
+                    My <strong>HTML Content</strong> ...
+          ```
+
+          Note: `boxId: 1` means that those contents are rendered in layouts that used [contents placeholder](documentation/template/contents),
+          in this case `{{ contents 1 }}`.
+
+          Since file system does not know any order, you can add `sort: <int>` as page property to sort all pages correctly.
+
+          ## Import website
+
+          Once you either have written down the structure in `app/jarves/website` on your own, or added all structure with the Jarves
+          administration and exported it then, you can import you website.
+
+          `php bin/console jarves:content:import`
+
+          Jarves parses all the files, **removes all pages** and places in the database the pages and content found in the
+          yml files.
+
+          Using this method, you can like http://jarves.io it does, store the whole website in a git repository.
+
+          More examples can be found in the jarves.io repository at
+          [github.com/jarves/jarves.io/tree/master/app/jarves/website/jarves.io](https://github.com/jarves/jarves.io/tree/master/app/jarves/website/jarves.io).
+
+
+          ## Sync website
+
+          Once you have imported your website, you can edit all content in the Jarves administration. Once you have changed some stuff
+          and thing your website is ready to be saved in a git for example, you can run everytime ` `php bin/console jarves:content:export`
+          to export your current state. In git you can see all changes using `git diff` in the console, and commit your changes at wish.
+
+

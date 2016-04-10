@@ -1,5 +1,3 @@
-{{ loadAsset('http://fonts.googleapis.com/css?family=Open+Sans:400,300', 'text/css') }}
-{{ loadAsset('http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400', 'text/css') }}
 {{ loadAsset('@AppBundle/css/layout.scss') }}
 
 {{ loadAsset('@AppBundle/js/jquery-1.11.1.min.js') }}
@@ -11,7 +9,7 @@
 <header>
     <div class="wrapper">
         <a href="/" class="logo"><img src="/bundles/app/images/jarves-logo.png"/></a>
-        <nav>
+        <nav class="main">
             {{ navigationLevel(1) }}
         </nav>
         <div class="break"></div>

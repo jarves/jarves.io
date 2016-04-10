@@ -16,9 +16,10 @@ contents:
 
           1. Create a bundle or use AppBundle.
           2. Create one or several layouts, e.g `src/AppBundle/Resources/views/Layout/default.html.twig`.
-          3. Create a theme in Jarves Bundle Editor (administration -> bundles -> development -> edit -> themes) or write the configuration yourself.
+          3. Create a theme in Jarves Bundle Editor (administration -> bundles -> development -> edit -> themes) or
+          [write the configuration yourself](documentation/configuration/theme).
           4. Use the new theme in a domain (administration -> nodes -> domain).
-          5. Choose your newly created layouts in pages (administration -> nodes).
+          5. Choose your newly created layouts in pages (Administration -> Nodes, or Administration -> Pages).
 
           ## 1. Create a bundle
 
@@ -72,7 +73,7 @@ contents:
 
           A typical folder structure:
 
-          ![Folder structure](images/create-a-theme/appbundle-folder-structure.png?1)
+          ![Folder structure](bundles/app/images/create-a-theme/appbundle-folder-structure.png?1)
 
           ### Load additional assets
 
@@ -146,11 +147,11 @@ contents:
           The bundle editor opens: Click on tab 'Themes'. Click at the left side on 'Add' to create a new blank row. You can
            now enter there an id, which should be unique, and a label (which is displayed in the page layout chooser)
 
-          ![Bundle Editor, Themes](images/create-a-theme/bundle-editor--themes.png)
+          ![Bundle Editor, Themes](bundles/app/images/create-a-theme/bundle-editor--themes.png)
 
           Now you have defined the theme. Next step is to link your template with an layout. Click on the button 'Page Layouts':
 
-          ![Bundle Editor, Themes, page layouts](images/create-a-theme/bundle-editor--themes--page-layouts.png)
+          ![Bundle Editor, Themes, page layouts](bundles/app/images/create-a-theme/bundle-editor--themes--page-layouts.png)
 
           As you can see, there are several select boxes. Startpage, Default, Full are layouts you can choose for a page in the page editor.
           `404 - not Found` and `Access denied` are special layouts, which are being used for cases Jarves needs to print a 404 or a access
@@ -225,11 +226,11 @@ contents:
           Per default, Jarves scopes all available layouts for pages by the chosen theme in their domain. So you need to choose your newly created theme
           in the domain you want use it. All pages inside this domain can now choose layouts from the defined theme.
 
-          ![Domain, theme setting](images/create-a-theme/pages-domain.png)
+          ![Domain, theme setting](bundles/app/images/create-a-theme/pages-domain.png)
 
           Next, you can open a page and choose between your layouts:
 
-          ![Domain, layout setting](images/create-a-theme/pages-node-layout.png)
+          ![Domain, layout setting](bundles/app/images/create-a-theme/pages-node-layout.png)
 
           The editor will reload automatically if you change the layout.
 
@@ -238,7 +239,7 @@ contents:
           Since you have used `{% contents 1 %}` in your layout, you can manage content at these places using the Jarves content editor:
 
 
-          ![Domain, layout setting](images/create-a-theme/pages-node-content.png)
+          ![Domain, layout setting](bundles/app/images/create-a-theme/pages-node-content.png)
 
 
           ## Done
