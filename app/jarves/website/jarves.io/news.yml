@@ -4,7 +4,7 @@ visible: false
 contents:
     -
         boxId: 1
-        sort: 0
+        type: plugin
         content:
             bundle: JarvesPublicationBundle
             plugin: listing
@@ -12,5 +12,3 @@ contents:
                 template: default.html.twig
                 itemsPerPage: 10
                 detailPage: ''
-        type: plugin
-        hide: false

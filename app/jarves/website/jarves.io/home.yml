@@ -1,36 +1,3 @@
 title: Home
 layout: startpage
 sort: 0
-contents:
-    -
-        boxId: 1
-        sort: 0
-        content: '<p>Jarves cms has been installed correctly.</p><p>&nbsp;</p><p><a href="http://www.jarves.io" data-mce-href="http://www.jarves.io">Jarves cms Website</a></p><p>&nbsp;</p><p>&nbsp;</p><p>Go to <a href="jarves" data-mce-href="jarves">administration</a> to manage your new website.</p><p>&nbsp;</p><p><strong>Default login:</strong></p><p><strong><br></strong></p><p style="padding-left: 10px;" data-mce-style="padding-left: 10px;">Username: admin</p><p style="padding-left: 10px;" data-mce-style="padding-left: 10px;">Password: admin</p>'
-        hide: false
-    -
-        boxId: 1
-        sort: 1
-        content:
-            bundle: JarvesPublicationBundle
-            plugin: listing
-            options:
-                itemsPerPage: 10
-                maxPages: 10
-                detailPage: ''
-                template: default.html.twig
-                categoryId: {  }
-                enableRss: false
-        type: plugin
-        hide: false
-    -
-        boxId: 2
-        sort: 2
-        content:
-            bundle: JarvesPublicationBundle
-            plugin: categoryList
-            options:
-                listNode: '1'
-                template: default.html.twig
-                category_rsn: {  }
-        type: plugin
-        hide: false

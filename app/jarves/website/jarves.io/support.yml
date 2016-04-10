@@ -3,16 +3,14 @@ sort: 3
 contents:
     -
         boxId: 1
-        sort: 0
+        type: markdown
         content: |
-            
+
             # Support
-            
+
             If you have issues with Jarves you can file an issue in [github.com/jarves/jarves/issues](https://github.com/jarves/jarves/issues).
-            
-            
+
+
             Try also the Gitter chat:
             <a href="https://gitter.im/jarves/jarves"><img src="https://badges.gitter.im/Join Chat.svg"/></a>
-            
-        type: markdown
-        hide: false
+

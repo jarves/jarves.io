@@ -3,11 +3,11 @@ sort: 2
 contents:
     -
         boxId: 1
-        sort: 0
+        type: markdown
         content: |
             # Download
             Jarves is currently only available at GitHub: <a href="https://github.com/jarves/jarves">github.com/jarves/jarves</a>
-            
+
             As Zip: <a href="https://github.com/jarves/jarves/archive/master.zip">github.com/jarves/jarves/archive/master.zip</a>
 
             ## Current Version
@@ -16,6 +16,3 @@ contents:
 
             Please note: The ZIP downloads do not contain all third party libraries (./vendor/). You still need to install first a Symfony project,
             see [Installation Guide](documentation/quick-start/installation) for more information.
-            
-        type: markdown
-        hide: false
