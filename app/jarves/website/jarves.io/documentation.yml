@@ -20,8 +20,8 @@ contents:
 
           Jarves provides a optional administration gui you can use to give your users the ability to manage/see:
 
-           1. Pages and domains (move, add, remove)
-           1. Static content (Text via WYSIWYD)
+           1. Pages and domains (move, edit, add, remove)
+           1. Static content (Text via WYSIWYG)
            2. Files (upload, move, preview, edit images, etc)
            3. Users, groups, Permissions (very detail permission system when you work with Jarves object model)
            4. Objects (from the RAD/crud system)
@@ -45,9 +45,11 @@ contents:
           Content can be anything: Cars, products, categories, ... You only need to define the object itself. Create for a example
           a Car object, define some properties like id (number, primary key), title(string) and color (string) and let
           Jarves generate for your the Propel (ORM) schema, its ORM models and update the database schema with its commands.
-          Now you can create in no one time crud views using yaml and choose between all available [Form Fields](documentation/fields).
+          Now you can create in no time crud views using yaml or use the bundle editor, and choose between all
+          available [Form Fields](documentation/fields). Now you can manage (list/add/edit/remove) your object without writing
+          one line of php or html code. Not only that: You get a full REST API of your objects, automatically.
 
-          With the ability to create relations between objects you can quickly build whole application in minutes. In other systems
+          With the ability to create relations between objects you can quickly build a whole application in minutes. In other systems
           or pure Symfony you would need days to implement the same because you would need to write every html input field
           (or Symfony form & validation), every SQL table or ORM model, by your bare hands - not to consider the whole interface with login
           and permission system etc you would need to develop beforehand.
