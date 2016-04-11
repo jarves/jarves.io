@@ -59,7 +59,7 @@ contents:
           On the first level are all domains with a `<domainName>.yml` file and a folder `<domainName>/`.
 
           In the domain.yml file is the domain object as yml format.
-          Please note: What you define here is a domain object, which reference can be found at [objects/domain](documentation/objects/domain).
+          Please note: What you define here is a domain object, which reference can be found at [objects/domain](documentation/objects/jarves/domain).
 
           ```yml
           domain: jarves.io
@@ -83,7 +83,7 @@ contents:
           represent the url stucture of your site.
 
           A <page-url>.yml in the `<domainName>/` folder could look like below. Please note: What you define here is a
-           node object, which reference can be found at [objects/node](documentation/objects/node).
+           node object, which reference can be found at [objects/node](documentation/objects/jarves/node).
 
           ```yml
           title: Static Page
@@ -107,7 +107,7 @@ contents:
           Note: `boxId: 1` means that those contents are rendered in layouts that used [contents placeholder](documentation/template/contents),
           in this case `{{ contents 1 }}`.
 
-          Since file system does not know any order, you can add `sort: <int>` as page property to sort all pages correctly.
+          Since typicall file systems do not know any order, you can add `sort: <int>` as page property to sort all pages correctly.
 
           ## Import website
 
