@@ -17,6 +17,7 @@ contents:
 
           In Jarves, file based websites aren't really a static page with only files, because there is still a database behind Jarves.
           However, Jarves provides you an export and an import command you can use to give you the advantages of a static page site.
+          If you want to use Jarves completely without database server, you can chose sqlite as database.
 
           ## Export website
 
