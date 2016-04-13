@@ -8,8 +8,6 @@ contents:
         content: |
             # Screenshots
 
-            Please note: Some screenshots are very old.
-
             General
             -------
 
@@ -19,18 +17,34 @@ contents:
             Jarves Editor
             ![Administration Frontend Edit](bundles/app/images/screenshots/admin-frontend-edit.png)
 
+            Jarves Editor - Content Types
+            ![Administration Frontend Edit](bundles/app/images/screenshots/admin-frontend-edit-content-elements.png)
+
             File manager
             ![Administration File manager](bundles/app/images/screenshots/admin-files-context-image.png)
 
             File manager Image View
             ![Administration File manager](bundles/app/images/screenshots/admin-files-context-image2.png)
 
+            File manager Image Edit
+            ![Administration File manager](bundles/app/images/screenshots/admin-files-image-crop.png)
+
+            File manager File Edit
+            ![Administration File manager](bundles/app/images/screenshots/admin-files-codemirror.png)
+
+            Dashboard
+            ![Dashboard](bundles/app/images/screenshots/admin-dashboard.png)
+
+            Admin Search
+            ![Admin Search](bundles/app/images/screenshots/admin-search.png)
+
             Nodes
             ![Administration Nodes](bundles/app/images/screenshots/admin-nodes.png)
 
             CRUD Framework
 
-            ![Administration CRUD Framework Window List](bundles/app/images/screenshots/admin-list.png)
+            ![Administration CRUD Framework Window List](bundles/app/images/screenshots/admin-crud-list.png)
+            ![Administration CRUD Framework Window](bundles/app/images/screenshots/admin-crud-form.png)
             ![Administration CRUD Framework Window](bundles/app/images/screenshots/admin-users.png)
 
             Object chooser
@@ -58,30 +72,11 @@ contents:
             Objects Tab Fields
             ![Objects Tab Fields](bundles/app/images/screenshots/admin-extensioneditor-objects-fields.png)
 
-            Windows Tab
-            ![Windows Tab](bundles/app/images/screenshots/admin-extensioneditor-windows.png)
-
             Plugins Tab
             ![Plugins Tab](bundles/app/images/screenshots/admin-extensioneditor-plugins.png)
 
-
-            CRUD View Editor
-            ------------------
-
-            General Tab
-            ![General Tab](bundles/app/images/screenshots/admin-windoweditor-general.png)
-
-            Edit/Add Tab
-            ![Edit/Add Tab](bundles/app/images/screenshots/admin-windoweditor-edit-add.png)
-
-            List Tab
-            ![List Tab](bundles/app/images/screenshots/admin-windoweditor-list.png)
-
-            Class Methods Tab
-            ![Class Methods Tab](bundles/app/images/screenshots/admin-windoweditor-classmethods1.png)
-
-            Class Methods Tab 2
-            ![Class Methods Tab 2](bundles/app/images/screenshots/admin-windoweditor-classmethods2.png)
+            Translations
+            ![Translations](bundles/app/images/screenshots/admin-translations.png)
 
 
             Permission Management
@@ -95,7 +90,6 @@ contents:
 
             Objects 2
             ![Objects 2](bundles/app/images/screenshots/admin-permission-management3.png)
-
 
 
             Stuff
