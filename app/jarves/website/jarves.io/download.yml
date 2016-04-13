@@ -12,8 +12,8 @@ contents:
 
             ## Current Version
 
-            0.2.0-alpha: [Download](https://github.com/jarves/jarves/releases/tag/0.2.0-alpha) |
-            [Zip](https://github.com/jarves/jarves/archive/0.2.0-alpha.zip)
+            0.2.0-alpha: [Download](https://github.com/jarves/jarves/releases/tag/0.2.0-alpha)
+            | [Zip](https://github.com/jarves/jarves/archive/0.2.0-alpha.zip)
 
             Please note: The ZIP downloads do not contain all third party libraries (./vendor/). You still need to install first a Symfony project,
             see [Installation Guide](documentation/quick-start/installation) for more information.

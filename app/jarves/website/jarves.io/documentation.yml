@@ -8,6 +8,12 @@ contents:
         content: |
           # Jarves - Documentation
 
+
+          ## Current Version
+
+          0.2.0-alpha: [Download](https://github.com/jarves/jarves/releases/tag/0.2.0-alpha)
+          | [Zip](https://github.com/jarves/jarves/archive/0.2.0-alpha.zip)
+
           [![Build Status](https://travis-ci.org/jarves/jarves.png?branch=master)](https://travis-ci.org/jarves/jarves)
           [![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 
