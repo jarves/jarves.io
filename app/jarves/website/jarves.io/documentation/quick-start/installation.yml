@@ -20,6 +20,15 @@ contents:
             ### 2.1 Install the Jarves bundles for development/testing
 
             Remove in `composer.json` the `config.platform.php` settings (latest lines).
+            Add in `composer.json` 
+            
+            ```
+            {
+                ...
+                 "minimum-stability": "dev",
+                 "prefer-stable": true,
+            }
+            ```
             
             Use `"symfony-assets-install": "symlink"` if your system supports symlinks.
 
@@ -36,9 +45,9 @@ contents:
             
             http://sass-lang.com/install
             
-            osx: `sudo gem install sass`
-            linux: `sudo su -c "gem install sass"`
-            windows: see http://sass-lang.com/install
+            1. osx: `sudo gem install sass`
+            2. linux: `sudo su -c "gem install sass"`
+            3. windows: see http://sass-lang.com/install
 
             ## Configure Symfony 
 
