@@ -11,6 +11,16 @@ contents:
             
             A end-user zip package can be downloaded at http://jarves.io when we've released the first alpha version.
             
+            ## Jarves Standard
+            
+            The easiest way yet is to install https://github.com/jarves/jarves-standard. See readme for the setup introduction.
+            
+            ## Custom installation
+            
+            If you want to go the hard way, so can install symfony and add Jarves on your own. This is
+            also the introduction you should follow when you have already a Symfony application and
+            want to add Jarves additionall to it.
+            
             ### 1. [Install Symfony](http://symfony.com/doc/current/book/installation.html) (v3.*)
             
             ```html
