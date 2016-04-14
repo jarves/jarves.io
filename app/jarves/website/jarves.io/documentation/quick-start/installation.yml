@@ -14,29 +14,33 @@ contents:
             ### 1. [Install Symfony](http://symfony.com/doc/current/book/installation.html) (v3.*)
             
             ```html
-            symfony new website-with-jarves
+            composer create-project symfony/framework-standard-edition website-with-jarves
             ```
             
             ### 2.1 Install the Jarves bundles for development/testing
-            
-            ```bash
-            cd src
-            git clone git@github.com:jarves/jarves.git Jarves
-            cd Jarves
-            git clone git@github.com:jarves/jarves-publication.git Publication
-            git clone  git@github.com:jarves/jarves-demotheme.git DemoTheme
-            ```
-            
-            ### 2.2 or install all Jarves bundles using composer
 
-            This is currently not supported due to a limitation in PropelBundle, which
-            will be [fixed shortly](https://github.com/propelorm/PropelBundle/pull/408).
+            Remove in `composer.json` the `config.platform.php` settings (latest lines).
+            
+            Use `"symfony-assets-install": "symlink"` if your system supports symlinks.
 
             ```bash
-            composer require jarves/jarves
-            composer require jarves/jarves-publication
-            composer require jarves/jarves-demotheme
+            cd website-with-jarves
+            composer require jarves/jarves:dev-master
+            composer require jarves/publication-bundle:dev-master
+            composer require jarves/demotheme-bundle:dev-master
             ```
+            
+            ### 2.2 Install some dependencies
+            
+            #### SCSS
+            
+            http://sass-lang.com/install
+            
+            osx: `sudo gem install sass`
+            linux: `sudo su -c "gem install sass"`
+            windows: see http://sass-lang.com/install
+
+            ## Configure Symfony 
 
             Activate the bundle in your AppKernel:
             
@@ -63,118 +67,20 @@ contents:
             }
             ```
             
-            Add following composer dependencies to the root `composer.json`:
-            
-            ```json
-            
-               "require": [
-            
-                    "propel/propel-bundle": "2.0.x-dev@dev",
-                    "propel/propel": "dev-master",
-                    "sybio/image-workshop": ">=2",
-                    "michelf/php-markdown": "^1.6",
-                    "composer\/composer": "1.0.0",
-                    "friendsofsymfony/rest-bundle": "^2.0.0-BETA2",
-                    "nelmio/api-doc-bundle": "~2.5",
-                    "icap/html-diff": ">=1.0.1",
-                    "leafo/scssphp": ">=0.6.1"
-                ]
-            ```
-            
-            do **not** run `composer update` yet.
-            
-            Remove in `composer.json` the `config.platform.php` settings (latest lines).
-            
-            Use `"symfony-assets-install": "symlink"` if your system supports symlinks.
-            
-            Composer.json should look like:
-            
-            
-            ```json
-            
-            {
-                "name": "aetros/aetros.com",
-                "license": "proprietary",
-                "type": "project",
-                "autoload": {
-                    "psr-4": {
-                        "": "src/"
-                    },
-                    "classmap": [
-                        "app/AppKernel.php",
-                        "app/AppCache.php"
-                    ]
-                },
-                "require": {
-                    "php": ">=5.6",
-                    "symfony/symfony": "^3.0",
-                    "twig/extensions": ">=1.0",
-                    "symfony/monolog-bundle": ">=2.8",
-                    "sensio/distribution-bundle": ">=2.3",
-                    "sensio/framework-extra-bundle": ">=2.3",
-                    "incenteev/composer-parameter-handler": ">=2.0",
-            
-                    "propel/propel-bundle": "2.0.x-dev@dev",
-                    "propel/propel": "dev-master",
-                    "sybio/image-workshop": ">=2",
-                    "michelf/php-markdown": "^1.6",
-                    "composer\/composer": "1.0.0",
-                    "friendsofsymfony/rest-bundle": "^2.0.0-BETA2",
-                    "nelmio/api-doc-bundle": "~2.5",
-                    "icap/html-diff": ">=1.0.1",
-                    "leafo/scssphp": ">=0.6.1"
-            
-                },
-                "require-dev": {
-                    "sensio/generator-bundle": "~3.0",
-                    "symfony/phpunit-bridge": "~2.7"
-                },
-                "scripts": {
-                    "post-install-cmd": [
-                        "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-                    ],
-                    "post-update-cmd": [
-                        "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-                        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-                    ]
-                },
-                "config": {
-                    "bin-dir": "bin"
-                },
-                "extra": {
-                    "symfony-app-dir": "app",
-                    "symfony-web-dir": "web",
-                    "symfony-assets-install": "symlink",
-                    "incenteev-parameters": {
-                        "file": "app/config/parameters.yml"
-                    }
-                }
-            }
-            ```
-            
-            
             ### 3. Define the jarves configuration
             
             ```bash
                cp src/Jarves/Resources/meta/config.xml.dist app/config/config.jarves.xml
                #or if from composer
-               cp vendor/jarves/jarves-bundle/Jarves/Resources/meta/config.xml.dist app/config/config.jarves.xml
+               cp vendor/jarves/jarves/Resources/meta/config.xml.dist app/config/config.jarves.xml
             ```
             
             Adjust the `<database>` configuration in `app/config/config.jarves.xml`.
             
-            Pro tip: You can completely remove `<database>` section, then Symfony is using the database settings from your `app/config/parameters.yml`.
+            > __Pro tip__ You can completely remove `<database>` section, then Symfony is using the database settings from your `app/config/parameters.yml`.
             If you use this `<database>` configuration way, then all database related stuff regarding Propel from your `app/config` is overwritten.
             This database section modifies only Propel connection settings (not Doctrine or other services that use `app/config/parameters.yml` `database_*` parameters)
+            However, is then necessary to configure Propel's configuration on your own in app/config/config.yml.
             
             ```xml
               <database>
@@ -199,9 +105,10 @@ contents:
             ```
             
             Adjust in `app/config/config.jarves.xml` `<groupOwner>www-data</groupOwner>` to a group that your websites is running in.
-            For OSX its mostly `_www` or `staff`, and for Ubuntu/Debian `www-data`.
+            For OSX its mostly `_www` or `staff`, and for Ubuntu/Debian `www-data`. This is necessary because Jarves
+            creates files and changes its file group owner to the correct name defined in `groupOwner`.
             
-            Now **run** `composer update`.
+            Note: When you change `app/config/config.jarves.xml` you need to clean the cache (`rm -rf var/cache/*`).
             
             ### 4. Setup models and database schema
             
@@ -213,7 +120,7 @@ contents:
             
             ### Installs demo data
             
-            bin/console jarves:install:demo localhost /
+            php bin/console jarves:install:demo 127.0.0.1 /
             
             ```
             
@@ -233,9 +140,9 @@ contents:
             # open http://127.0.0.1:8000/jarves
             ```
             
-            Username and password for the administration login (http://localhost:8000/jarves) is both `admin`.
+            Username and password for the administration login (http://127.0.0.1:8000/jarves) is both `admin`.
             
-            REST API doc powered by NelmioApiBundle is available at http://localhost:8000/jarves/api.
+            REST API doc powered by NelmioApiBundle is available at http://127.0.0.1:8000/jarves/api.
             
             The frontend routes are loaded automatically.
             
