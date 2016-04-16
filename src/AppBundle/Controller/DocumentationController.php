@@ -28,182 +28,174 @@ use Symfony\Component\Yaml\Dumper;
 
 class DocumentationController extends PluginController
 {
-    protected function getCache($id)
-    {
-        return $this->get('jarves.cache.cacher')->getDistributedCache($id);
-    }
-
-    protected function setCache($id, $cache)
-    {
-        return $this->get('jarves.cache.cacher')->setDistributedCache($id, $cache);
-    }
-
     public function fieldDetailAction($className = null)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/field/detail/' . $className)) {
-            return $cache;
-        }
-
         if (!$className) {
             return null;
         }
 
-        /** @var Jarves $jarves */
-        $jarves = $this->get('jarves');
+        $cacheKey = 'jarves/documentation/field/detail/' . $className;
 
-        $fieldTypes = $jarves->getFieldTypes();
-        $type = $jarves->getConfigs()->getFieldType($className);
-        $typeInstance = null;
-        $object = null;
-        $configs = null;
-        $addedObjects = null;
+        return $this->renderFullCached($cacheKey,
+            'AppBundle:Field:detail.html.twig',
+            function () use ($className) {
 
-//        $adminAssets = new AdminAssets($this->jarves, $this->pageStack, $this->acl);
-//        $adminAssets->addMainResources();
-//        $pageStack->getPageResponse()->addJsFile($type->getJavascript());
+                /** @var Jarves $jarves */
+                $jarves = $this->get('jarves');
 
-        if (!$type->isUserInterfaceOnly()) {
-            $typeInstance = $fieldTypes->newType($className);
+                $fieldTypes = $jarves->getFieldTypes();
+                $type = $jarves->getConfigs()->getFieldType($className);
+                $typeInstance = null;
+                $object = null;
+                $configs = null;
+                $addedObjects = null;
 
-            $fieldDefinition = new Field(null, $jarves);
-            $fieldDefinition->setId('<fieldName>');
+                //$adminAssets = new AdminAssets($this->jarves, $this->pageStack, $this->acl);
+                //$adminAssets->addMainResources();
+                //$pageStack->getPageResponse()->addJsFile($type->getJavascript());
 
-            $pkField = new Field(null, $jarves);
-            $pkField->setId('<idFieldName>');
-            $pkField->setType('number');
-            $pkField->setPrimaryKey(true);
-            $pkField->setAutoIncrement(true);
+                if (!$type->isUserInterfaceOnly()) {
+                    $typeInstance = $fieldTypes->newType($className);
 
-            $typeInstance->setFieldDefinition($fieldDefinition);
+                    $fieldDefinition = new Field(null, $jarves);
+                    $fieldDefinition->setId('<fieldName>');
 
-            $bundle = new Bundle('AppBundle\\AppBundle', $jarves);
+                    $pkField = new Field(null, $jarves);
+                    $pkField->setId('<idFieldName>');
+                    $pkField->setType('number');
+                    $pkField->setPrimaryKey(true);
+                    $pkField->setAutoIncrement(true);
 
-            $object = new Object(null, $jarves);
-            $object->setId('<objectName>');
-            $object->addField($pkField);
+                    $typeInstance->setFieldDefinition($fieldDefinition);
 
-            $foreignObject = new Object(null, $jarves);
-            $foreignObject->setId('<foreignObjectName>');
-            $foreignObject->addField($pkField);
+                    $bundle = new Bundle('AppBundle\\AppBundle', $jarves);
 
-            $bundle->addObject($foreignObject);
-            $bundle->addObject($object);
+                    $object = new Object(null, $jarves);
+                    $object->setId('<objectName>');
+                    $object->addField($pkField);
 
-            $fieldDefinition->setObject('AppBundle/<foreignObjectName>');
-            $object->addField($fieldDefinition);
+                    $foreignObject = new Object(null, $jarves);
+                    $foreignObject->setId('<foreignObjectName>');
+                    $foreignObject->addField($pkField);
 
-            $configs = new Configs($jarves);
-            $configs->addConfig($bundle);
-            $typeInstance->bootRunTime($object, $configs);
+                    $bundle->addObject($foreignObject);
+                    $bundle->addObject($object);
 
-            $addedObjects = [];
-            foreach ($bundle->getObjects() as $bundleObject) {
-                if ($bundleObject !== $object && $bundleObject !== $foreignObject) {
-                    $addedObjects[] = $bundleObject;
+                    $fieldDefinition->setObject('AppBundle/<foreignObjectName>');
+                    $object->addField($fieldDefinition);
+
+                    $configs = new Configs($jarves);
+                    $configs->addConfig($bundle);
+                    $typeInstance->bootRunTime($object, $configs);
+
+                    $addedObjects = [];
+                    foreach ($bundle->getObjects() as $bundleObject) {
+                        if ($bundleObject !== $object && $bundleObject !== $foreignObject) {
+                            $addedObjects[] = $bundleObject;
+                        }
+                    }
                 }
-            }
-        }
 
-        $result = $this->renderPluginView('AppBundle:Field:detail.html.twig', [
-            'typeConfig' => $type,
-            'type' => $typeInstance,
-            'extractor' => ClassExtractor::create($typeInstance),
-            'object' => $object,
-            'configs' => $configs,
-            'addedObjects' => $addedObjects
-        ]);
-
-        $this->setCache($cacheKey, $result);
-        return $result;
+                return [
+                    'typeConfig' => $type,
+                    'type' => $typeInstance,
+                    'extractor' => ClassExtractor::create($typeInstance),
+                    'object' => $object,
+                    'configs' => $configs,
+                    'addedObjects' => $addedObjects
+                ];
+            });
     }
 
     public function contentTypeDetailAction($className = null)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/content-type/detail/' . $className)) {
-            return $cache;
-        }
+        $cacheKey = 'jarves/documentation/content-type/detail/' . $className;
 
         if (!$className) {
             return null;
         }
 
-        $jarves = $this->get('jarves');
+        return $this->renderFullCached($cacheKey,
+            'AppBundle:ContentType:detail.html.twig',
+            function () use ($className) {
 
-        $contentType = $jarves->getConfigs()->getContentType($className);
-        $extractor = null;
-        if ($contentType->getId() !== 'stopper') {
-            $extractor = ClassExtractor::create($this->get($contentType->getService()));
-        }
+                $jarves = $this->get('jarves');
 
-        $result = $this->renderPluginView('AppBundle:ContentType:detail.html.twig', [
-            'contentType' => $contentType,
-            'extractor' => $extractor,
-        ]);
-        $this->setCache($cacheKey, $result);
-        return $result;
+                $contentType = $jarves->getConfigs()->getContentType($className);
+                $extractor = null;
+                if ($contentType->getId() !== 'stopper') {
+                    $extractor = ClassExtractor::create($this->get($contentType->getService()));
+                }
+
+                return [
+                    'contentType' => $contentType,
+                    'extractor' => $extractor,
+                ];
+            }
+        );
     }
 
     public function objectsDetailAction($objectKey = null)
     {
-        $pageStack = $this->get('jarves.page_stack');
-        $pageStack->getPageResponse()->loadAssetFile('@AppBundle/css/api-doc.scss');
-        $pageStack->getPageResponse()->loadAssetFileAtBottom('@AppBundle/js/api-doc.js');
-
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/objects/detail/' . $objectKey)) {
-            return $cache;
-        }
-
         if (!$objectKey) {
             return null;
         }
 
-        $jarves = $this->get('jarves');
+        $cacheKey = 'jarves/documentation/objects/detail/' . $objectKey;
 
-        $object = $jarves->getConfigs()->getObject($objectKey);
+        return $this->renderFullCached($cacheKey,
+            'AppBundle:Objects:detail.html.twig',
+            function () use ($objectKey) {
+                $pageStack = $this->get('jarves.page_stack');
+                $pageStack->getPageResponse()->loadAssetFile('@AppBundle/css/api-doc.scss');
+                $pageStack->getPageResponse()->loadAssetFileAtBottom('@AppBundle/js/api-doc.js');
 
-        $commentExtractor = new \Nelmio\ApiDocBundle\Util\DocCommentExtractor;
-        $controllerNameParser = new ControllerNameParser($this->get('kernel'));
+                $jarves = $this->get('jarves');
 
-        $handlers = [
-            new \Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler,
-            new \Nelmio\ApiDocBundle\Extractor\Handler\JmsSecurityExtraHandler,
-            new \Nelmio\ApiDocBundle\Extractor\Handler\SensioFrameworkExtraHandler,
-            new \Jarves\Extractor\Handler\ObjectCrudHandler($this->get('jarves'), $this->get('jarves.objects')),
-//            new \Nelmio\ApiDocBundle\Extractor\Handler\PhpDocHandler($commentExtractor),
-        ];
+                $object = $jarves->getConfigs()->getObject($objectKey);
 
-        $extractor = new \Nelmio\ApiDocBundle\Extractor\ApiDocExtractor(
-            $this->get('service_container'),
-            $this->get('router'),
-            $this->get('annotation_reader'),
-            $commentExtractor,
-            $controllerNameParser,
-            $handlers,
-            []
-        );
+                $commentExtractor = new \Nelmio\ApiDocBundle\Util\DocCommentExtractor;
+                $controllerNameParser = new ControllerNameParser($this->get('kernel'));
 
-        $routes = [];
+                $handlers = [
+                    new \Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler,
+                    new \Nelmio\ApiDocBundle\Extractor\Handler\JmsSecurityExtraHandler,
+                    new \Nelmio\ApiDocBundle\Extractor\Handler\SensioFrameworkExtraHandler,
+                    new \Jarves\Extractor\Handler\ObjectCrudHandler($this->get('jarves'), $this->get('jarves.objects')),
+                    //new \Nelmio\ApiDocBundle\Extractor\Handler\PhpDocHandler($commentExtractor),
+                ];
 
-        foreach ($this->get('router')->getRouteCollection()->all() as $route) {
-            if ($route->hasDefault('_jarves_object') && $route->getDefault('_jarves_object') === $object->getKey()) {
-                $routes[] = $route;
-            }
-        }
+                $extractor = new \Nelmio\ApiDocBundle\Extractor\ApiDocExtractor(
+                    $this->get('service_container'),
+                    $this->get('router'),
+                    $this->get('annotation_reader'),
+                    $commentExtractor,
+                    $controllerNameParser,
+                    $handlers,
+                    []
+                );
 
-        $extractedDoc = $extractor->extractAnnotations($routes);
+                $routes = [];
 
-        $formatter = new NelmioHtmlFormatter();
-        $formatter->setTemplatingEngine($this->get('templating'));
+                foreach ($this->get('router')->getRouteCollection()->all() as $route) {
+                    if ($route->hasDefault('_jarves_object') && $route->getDefault('_jarves_object') === $object->getKey()) {
+                        $routes[] = $route;
+                    }
+                }
 
-        $apiDoc = $formatter
-            ->format($extractedDoc);
+                $extractedDoc = $extractor->extractAnnotations($routes);
 
-        $result = $this->renderPluginView('AppBundle:Objects:detail.html.twig', [
-            'objectConfig' => $object,
-            'apiDoc' => $apiDoc
-        ]);
-        $this->setCache($cacheKey, $result);
-        return $result;
+                $formatter = new NelmioHtmlFormatter();
+                $formatter->setTemplatingEngine($this->get('templating'));
+
+                $apiDoc = $formatter
+                    ->format($extractedDoc);
+
+                return [
+                    'objectConfig' => $object,
+                    'apiDoc' => $apiDoc
+                ];
+            });
     }
 
     public function restApiAction()
@@ -212,7 +204,8 @@ class DocumentationController extends PluginController
         $pageStack->getPageResponse()->loadAssetFile('@AppBundle/css/api-doc.scss');
         $pageStack->getPageResponse()->loadAssetFileAtBottom('@AppBundle/js/api-doc.js');
 
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/rest-api')) {
+        $cacheKey = 'jarves/documentation/rest-api';
+        if ($cache = $this->get('jarves.cache.cacher')->getDistributedCache($cacheKey)) {
             return $cache;
         }
 
@@ -255,28 +248,25 @@ class DocumentationController extends PluginController
 
         $result = "<div class=\"inline-nelmio-api-doc\">$apiDoc</div>";
 
-        $this->setCache($cacheKey, $result);
+        $this->get('jarves.cache.cacher')->setDistributedCache($cacheKey, $result);
         return $result;
     }
 
     public function configurationDetailAction($className = null)
     {
-        if ($cache = $this->getCache($cacheKey = 'jarves/documentation/configuration/detail/' . $className)) {
-            return $cache;
-        }
-
         if (!$className) {
             return null;
         }
 
-        $config = $this->getConfig($className);
+        $cacheKey = 'jarves/documentation/configuration/detail/' . $className;
 
-
-        $result = $this->renderPluginView('AppBundle:Configuration:detail.html.twig', [
-            'config' => $config,
-        ]);
-        $this->setCache($cacheKey, $result);
-        return $result;
+        return $this->renderFullCached($cacheKey,
+            'AppBundle:Configuration:detail.html.twig',
+            function () use ($className) {
+                return [
+                    'config' => $this->getConfig($className)
+                ];
+            });
     }
 
     /**
@@ -318,8 +308,6 @@ class DocumentationController extends PluginController
 
         $jarves = $this->get('jarves');
 
-        /** @var FieldTypes $fieldTypes */
-        $fieldTypes = $this->get('jarves')->getFieldTypes();
         $pageStack = $this->get('jarves.page_stack');
 
         $affix = trim($pageStack->getCurrentUrlAffix(), '/');
@@ -356,10 +344,10 @@ class DocumentationController extends PluginController
             ];
         }
 
-        $result = $this->render('AppBundle:Navigation:fields.html.twig', [
+        $response = $this->render('AppBundle:Navigation:fields.html.twig', [
             'items' => $items
         ]);
-        return $result;
+        return $response;
     }
 
     public function configurationNavigationAction(Node $parentNode)

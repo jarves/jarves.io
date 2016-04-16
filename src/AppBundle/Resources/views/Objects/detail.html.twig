@@ -57,14 +57,18 @@
 
 <h2>Relations</h2>
 
-{% for relation in objectConfig.getRelations() %}
-<div class="field-option">
-    <h4><code>{{ relation.name }}</code>
-        <span class="sub">{{ relation.type }} -> <a href="documentation/objects/{{ relation.foreignObjectKey }}">{{ relation.foreignObjectKey }}</a>
-        </span>
-    </h4>
-</div>
-{% endfor %}
+{% if objectConfig.getRelations() %}
+    {% for relation in objectConfig.getRelations() %}
+    <div class="field-option">
+        <h4><code>{{ relation.name }}</code>
+            <span class="sub">{{ relation.type }} -> <a href="documentation/objects/{{ relation.foreignObjectKey }}">{{ relation.foreignObjectKey }}</a>
+            </span>
+        </h4>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="description">No relations available for this object.</div>
+{% endif %}
 
 <h2>REST APIs</h2>
 

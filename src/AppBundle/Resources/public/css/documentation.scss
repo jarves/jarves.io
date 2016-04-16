@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import "bourbon/bourbon";
 @import 'neat/neat';
 
@@ -142,8 +144,8 @@ table.table {
   }
 }
 
-p.description {
-  color: #949494;
+.description {
+  color: #a0a0a0;
 }
 
 h3, h4 {
@@ -155,10 +157,14 @@ h3, h4 {
 
 div.field-option {
   padding: 5px 0;
-  border-bottom: 1px dashed silver;
+  border-left: 5px solid #Ddd;
+  margin: 20px 0;
+  background-color: #fafafa;
+  padding-left: 15px;
 
   > h4:first-child{
     margin: 0;
     margin-bottom: 5px;
   }
 }
+

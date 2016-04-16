@@ -36,18 +36,18 @@ body, html {
   padding: 0;
   margin: 0;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 24px;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
   font-smooth: never;
-  line-height: 190%;
 }
 
 b, strong {
   font-weight: 400;
 }
 
-code, .hljs {
+code {
   font-family: "Source Code Pro", monospace;
   font-weight: 400;
   font-size: 12px;
@@ -69,10 +69,14 @@ pre > code {
 }
 
 $borderColor: #86B6C1;
-pre.fancy{
+pre.fancy {
   position: relative;
   overflow: visible;
   padding: 0;
+
+  > code {
+    margin: 35px 0;
+  }
 
   .code-top {
     position: absolute;
@@ -391,6 +395,10 @@ img.home-banner-logo-bg {
   @include animation-iteration-count(infinite);
 }
 
+.home-more,
+.home-features {
+  font-size: 16px;
+}
 
 .home-features {
   padding: 50px 0;
@@ -612,13 +620,13 @@ footer {
 }
 
 footer .copyright {
-  font-size: 11px;
+  font-size: 13px;
   color: #ddd;
 }
 
 footer a,
 footer a:link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
@@ -628,15 +636,14 @@ footer a:hover {
 
 footer .links {
   padding: 30px;
-  background-color: $mainColor;
 }
 
 
 footer .links a,
 footer .links a:link {
-  text-decoration: none;
+  text-decoration: underline;
   padding: 0 5px;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
 }
 
