@@ -19,3 +19,15 @@ contents:
           ## Screenshots
 
           If you want to see some screenshots, head to [Documentation > Screenshots](documentation/quick-start/screenshots)
+
+          ## Get Involved
+    -
+        boxId: 1
+        type: html
+        content: |
+
+          <div class="text-center">
+            <a class="button" href="download">Download</a>
+            <a class="button" href="documentation/quick-start/installation">Installation Guide</a>
+          </div>
+

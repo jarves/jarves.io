@@ -387,6 +387,27 @@ body .banner-screen-video {
   background-color: lighten($mainColor, 10%);
 }
 
+.text-center {
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  line-height: 50px;
+  text-decoration: none;
+  padding: 0 12px;
+  margin: 5px 0;
+  background-color: lighten($mainColor, 10%);
+  font-size: 18px;
+  color: white;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: lighten($mainColor, 20%);
+  }
+}
+
 div.home-banner-logo {
   height: 1px;
 }

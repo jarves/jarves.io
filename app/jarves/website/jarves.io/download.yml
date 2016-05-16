@@ -10,6 +10,18 @@ contents:
 
             As Zip: <a href="https://github.com/jarves/jarves/archive/master.zip">github.com/jarves/jarves/archive/master.zip</a>
 
+    -
+        boxId: 1
+        type: html
+        content: |
+          <div class="text-center">
+            <a class="button" href="documentation/quick-start/installation">Installation Guide</a>
+          </div>
+
+    -
+        boxId: 1
+        type: markdown
+        content: |
             ## Current Version
 
             0.2.0-alpha: [Download](https://github.com/jarves/jarves/releases/tag/0.2.0-alpha)
