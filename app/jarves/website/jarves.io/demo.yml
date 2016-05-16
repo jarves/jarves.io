@@ -1,0 +1,21 @@
+title: Demo
+sort: 2
+contents:
+    -
+        boxId: 1
+        type: markdown
+        content: |
+          # Demo
+
+          Jarves is available at [demo.jarves.io/](http://demo.jarves.io/).
+
+          It is based on the [Jarves Standard Edition](https://github.com/jarves/jarves-standard),
+          with [some adjustments to restrict the access](https://github.com/jarves/jarves-demo).
+
+          ### Admin login
+
+          Login to the [administration](http://demo.jarves.io/jarves) is for both username and password "admin".
+
+          ## Screenshots
+
+          If you want to see some screenshots, head to [Documentation > Screenshots](documentation/quick-start/screenshots)

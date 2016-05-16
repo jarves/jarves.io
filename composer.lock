@@ -1029,12 +1029,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jarves/jarves.git",
-                "reference": "34ee189e23417d9e991624e449b6fe27e8311f98"
+                "reference": "41d738aaf9d5c46239b04d790f92fdc748a481d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jarves/jarves/zipball/34ee189e23417d9e991624e449b6fe27e8311f98",
-                "reference": "34ee189e23417d9e991624e449b6fe27e8311f98",
+                "url": "https://api.github.com/repos/jarves/jarves/zipball/41d738aaf9d5c46239b04d790f92fdc748a481d1",
+                "reference": "41d738aaf9d5c46239b04d790f92fdc748a481d1",
                 "shasum": ""
             },
             "require": {
@@ -1085,7 +1085,7 @@
                 "WCMS",
                 "cms"
             ],
-            "time": "2016-04-16 01:20:41"
+            "time": "2016-05-16 19:07:17"
         },
         {
             "name": "jdorn/sql-formatter",
