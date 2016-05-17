@@ -391,7 +391,7 @@ body .banner-screen-video {
   text-align: center;
 }
 
-.button {
+.button, .button:link {
   display: inline-block;
   line-height: 50px;
   text-decoration: none;
