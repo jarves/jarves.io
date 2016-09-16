@@ -11,14 +11,20 @@ contents:
             - Preparing the database and models:
 
             ```bash
-              php Tests/Integration/skeletion/app/console jarves:configuration:database --help
+              cd Tests/Integration/skeletion/
+              php app/console jarves:configuration:database --help #configure database configuration
+              php app/console cache:clear
 
-              php Tests/Integration/skeletion/app/console propel:model:build
-              php Tests/Integration/skeletion/app/console propel:migration:diff
-              php Tests/Integration/skeletion/app/console propel:migration:up
+              php app/console propel:model:build
+              php app/console propel:migration:diff
+              php app/console propel:migration:up
 
-              php Tests/Integration/skeletion/app/console jarves:install:demo localhost /
-              rm -rf Tests/Integration/skeletion/app/cache/*
+              php app/console jarves:install:demo localhost /
+              rm -rf app/cache/*
+              
+              php app/console assets:install --symlink
+              
+              cd ../../.. #goes back to jarves itself
             ```
 
             - Fire `vendor/bin/phpunit`.
