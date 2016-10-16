@@ -13,9 +13,6 @@ contents:
             
             ## Jarves Standard
 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/_fkhjg82irQ" frameborder="0" allowfullscreen></iframe>
-
-            
             The easiest way yet is to install [github.com/jarves/jarves-standard](https://github.com/jarves/jarves-standard).
             See readme for the setup introduction.
             
@@ -34,8 +31,8 @@ contents:
             ### 2.1 Install the Jarves bundles for development/testing
 
             Remove in `composer.json` the `config.platform.php` settings (latest lines).
-            Add in `composer.json` 
-            
+            Add in `composer.json`
+
             ```
             {
                 ...
@@ -90,49 +87,27 @@ contents:
             }
             ```
             
-            ### 3. Define the jarves configuration
-            
-            ```bash
-               cp src/Jarves/Resources/meta/config.xml.dist app/config/config.jarves.xml
-               #or if from composer
-               cp vendor/jarves/jarves/Resources/meta/config.xml.dist app/config/config.jarves.xml
+            ### 3. Configurate database settings
+
+            Use `php bin/console jarves:configuration:database --help` to see how you can change the database settings.
+
+            You can alternatively go the regular Symfony way and just change `app/config/parameters.yml`
+            (`jarves:configuration:database` is changing that file anyways)
+
+            Make sure Propel ORM is configured in your `app/config/config.yml`.
+
+            ```yml
+            propel:
+                database:
+                    connections:
+                        default:
+                            adapter:    "%database_driver%"
+                            user:       "%database_user%"
+                            password:   "%database_password%"
+                            dsn:        "%database_driver%:host=%database_host%;dbname=%database_name%"
             ```
-            
-            Adjust the `<database>` configuration in `app/config/config.jarves.xml`.
-            
-            > __Pro tip__ You can completely remove `<database>` section, then Symfony is using the database settings from your `app/config/parameters.yml`.
-            If you use this `<database>` configuration way, then all database related stuff regarding Propel from your `app/config` is overwritten.
-            This database section modifies only Propel connection settings (not Doctrine or other services that use `app/config/parameters.yml` `database_*` parameters)
-            However, is then necessary to configure Propel's configuration on your own in app/config/config.yml.
-            
-            ```xml
-              <database>
-                <connections>
-                  <!--
-                    type: mysql|pgsql|sqlite (the pdo driver name)
-                    persistent: true|false (if the connection should be persistent)
-                    slave: true|false (if the connection is a slave or not (readonly or not))
-                    charset: 'utf8'
-                  -->
-                  <connection type="mysql" persistent="false" charset="utf8" slave="false">
-                    <!--Can be a IP or a hostname. For SQLite enter here the path to the file.-->
-                    <server>127.0.0.1</server>
-                    <port></port>
-                    <!--The schema/database name-->
-                    <name>test</name>
-                    <username>root</username>
-                    <password></password>
-                  </connection>
-                </connections>
-              </database>
-            ```
-            
-            Adjust in `app/config/config.jarves.xml` `<groupOwner>www-data</groupOwner>` to a group that your websites is running in.
-            For OSX its mostly `_www` or `staff`, and for Ubuntu/Debian `www-data`. This is necessary because Jarves
-            creates files and changes its file group owner to the correct name defined in `groupOwner`.
-            
-            Note: When you change `app/config/config.jarves.xml` you need to clean the cache (`rm -rf var/cache/*`).
-            
+
+
             ### 4. Setup models and database schema
             
             ```bash
