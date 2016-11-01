@@ -649,12 +649,6 @@ footer .copyright {
   color: #ddd;
 }
 
-footer a,
-footer a:link {
-  text-decoration: underline;
-}
-
-
 footer a:hover {
   color: white;
 }
@@ -663,13 +657,16 @@ footer .links {
   padding: 30px;
 }
 
-
 footer .links a,
 footer .links a:link {
-  text-decoration: underline;
-  padding: 0 5px;
+  padding: 0 10px;
+  display: inline-block;
   font-size: 14px;
-  text-transform: uppercase;
+
+  border-right: 1px solid lighten($mainColor, 13%);
+  &.last {
+    border-right: 0;
+  }
 }
 
 
