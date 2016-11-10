@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0732810d63843eca9c10f5773edf88ed",
     "content-hash": "dd84e1aa85cc801ab1b5809f60d9438b",
     "packages": [
         {
@@ -1029,30 +1028,30 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jarves/jarves.git",
-                "reference": "41d738aaf9d5c46239b04d790f92fdc748a481d1"
+                "reference": "b557685c291493877dc553eefcb344c0b4023c30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jarves/jarves/zipball/41d738aaf9d5c46239b04d790f92fdc748a481d1",
-                "reference": "41d738aaf9d5c46239b04d790f92fdc748a481d1",
+                "url": "https://api.github.com/repos/jarves/jarves/zipball/b557685c291493877dc553eefcb344c0b4023c30",
+                "reference": "b557685c291493877dc553eefcb344c0b4023c30",
                 "shasum": ""
             },
             "require": {
                 "composer/composer": "1.0.0",
-                "friendsofsymfony/rest-bundle": "2.0.0-BETA2",
+                "friendsofsymfony/rest-bundle": "2.1.0",
                 "icap/html-diff": ">=1.0.1",
                 "incenteev/composer-parameter-handler": ">=2.0",
-                "kadet/keylighter": "dev-master",
+                "kadet/keylighter": "^0.8.2",
                 "michelf/php-markdown": "^1.6",
                 "nelmio/api-doc-bundle": "~2.5",
                 "php": ">=5.6",
-                "propel/propel": "2.0.x-dev",
-                "propel/propel-bundle": "3.0.x-dev",
+                "propel/propel": "2.0.0-alpha6",
+                "propel/propel-bundle": "3.0.0-alpha1",
                 "sensio/distribution-bundle": ">=2.3",
                 "sensio/framework-extra-bundle": ">=2.3",
                 "sybio/image-workshop": ">=2",
                 "symfony/monolog-bundle": ">=2.8",
-                "symfony/symfony": "^3.0",
+                "symfony/symfony": "^2.8|^3.0",
                 "twig/extensions": ">=1.0"
             },
             "require-dev": {
@@ -1085,7 +1084,7 @@
                 "WCMS",
                 "cms"
             ],
-            "time": "2016-05-16 19:07:17"
+            "time": "2016-11-10 16:56:39"
         },
         {
             "name": "jdorn/sql-formatter",
